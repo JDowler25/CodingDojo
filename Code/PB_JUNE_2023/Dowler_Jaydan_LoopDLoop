@@ -1,0 +1,22 @@
+// Device pops out piece of candy each time runner reaches 2 miles on treadmill
+// Device stops giving out candy at mile 6 
+// Create for loop that tell device to pop out candy every 2nd mile
+// Create Variable for candy and set its value to 0
+var candy = 0
+// For loop will give candy at each second mile (i += 2) imcrementing candy's value by 1 
+for(let i = 0; i < 6; i += 2){
+    candy = candy+1;
+}
+ 
+console.log(candy)
+
+/* Ninja Bonus
+var candy = 0
+var runnerSpeed = 5.5
+if(runnerSpeed => 5.5){
+    for(let i = 0; i < 6; i += 2){
+    candy = candy+1;
+  }
+}
+console.log(candy)
+*/
