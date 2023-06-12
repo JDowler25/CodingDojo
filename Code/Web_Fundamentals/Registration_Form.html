@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Form</title>
+    </head>
+    <body>
+        <!-- here I'll create a form that nests tags that are needed to complete the registration. -->
+        <!-- Main Heading for the form. -->
+        <h1>Registration Form</h1>
+        <form action="/process" method="post">
+            <!-- I'll use division tags to group all appropriate tags with common purpose.-->
+            <div>
+                <!-- Ask for First Name -->
+                <label>First Name:* </label>
+                <input type="text" name="name" placeholder="Your first name..." >
+            </div>
+            <div>
+                <!-- Ask for Last Name -->
+                <label>Last Name:* </label>
+                <input type="text" name="name" placeholder="Your last name...">
+            </div>
+            <div>
+                <!-- Ask for user email -->
+                <label>Email:* </label>
+                <input type="text" name="email" placeholder="Your email..." >
+            </div>
+            <div>
+                <!-- Ask for user password -->
+                <label>Password:* </label>
+                <input type="text" name="email" placeholder="Your password..." >
+            </div>
+            <div>
+                <!-- Password Confirmation -->
+                <label>Confirm Password:* </label>
+                <input type="text" name="email" placeholder="Confirm password..." >
+            </div>
+            <div>
+                <!-- User DOB -->
+                <label>Date of Birth: </label>
+                <input type="date" name="dob">
+            </div>
+            <div>
+                <!-- Using Radio tag to get user gender-->
+                <label>Gender Identity: </label><br>
+                <input type="radio" name="font" value="Male" id="Male">
+                <label for="Male">Male</label>
+                <input type="radio" name="font" value="Female" id="Female">
+                <label for="Female">Female</label>
+                <input type="radio" name="font" value="Non-binary" id="Non-binary">
+                <label for="Non-binary">Non-binary</label>
+                <input type="radio" name="font" value="I_prefer_not_to_say" id="I_prefer_not_to_say">
+                <label for="I_prefer_not_to_say">I prefer not to say</label>
+            </div>
+            <div>
+                <!-- Create a text box for user to write about themselves-->
+                <label>A short description about myself: </label><br>
+                <textarea name="comment" cols="20" rows="3"></textarea>
+            </div>
+            <div>
+                <!-- Here the user will be able to select their fav. language-->
+                <label>Favorite Language: </label>
+                <select name="Favorite Language">
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C#">C#</option>
+                </select>             
+            </div>
+            <div>
+                <!-- Here the user will be able to opt- into receiving emails-->
+                <input type="checkbox" name="accept" id="accept">
+                <label for="accept">Yes, I would like to receive periodic email updates</label>
+            </div>
+            <div>
+                <!-- Create Account button-->
+                <input type="submit" value="Create Account" >
+            </div>
+            <div>
+                <p>* Indicates a required field</p>
+            </div>
+        </form>
+    </body>
+</html>
+                
+
+
+
+        
