@@ -1,14 +1,22 @@
 h1 {
     color: white;
     background-color: black;
+    font-family: cursive
 }
 h2 {
     color: white;
     background-color: rebeccapurple;
     text-align: center;
+    font-family: cursive
 }
 h3 {
     text-align: right;
     text-decoration: underline;
     background-color: lightskyblue;
+    color: navy;
+    font-family: cursive
+}
+span {
+    color: cyan;
+    font-family: cursive
 }
