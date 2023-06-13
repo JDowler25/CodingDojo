@@ -1,0 +1,46 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 2em;
+    margin: 0;
+    padding: 0;
+}
+div{
+    width: 250px;
+}
+div>button{
+    width: 200px;  
+    /* padding: 15px 0; */
+    text-align: center;
+    /* margin: 20px 10px; */
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid rgb(32, 193, 140);
+    color: rgb(32, 193, 140);
+    background-color: rgb(224, 224, 224);
+}
+.search {
+    padding: 15px 0;
+}
+.plus {
+    height: 50px;
+    width: 50px;
+    padding-top: 5px;
+    color: white;
+    border-radius: 50%;
+    background-color: cyan;
+    border: none;
+    text-align: center;
+}
+#plus{
+    font-weight: 600;
+    text-align: center;
+}
+#account{
+    width: 200px; 
+    text-align: center;
+    background-color: rgb(25, 25, 255);
+    color: white;
+    border: 2px black;
+    border-radius: none;
+} 
