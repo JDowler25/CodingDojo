@@ -1,0 +1,60 @@
+/* *{
+    outline: 1px solid red;
+} */
+*{
+    box-sizing: border-box;
+}
+.flag{
+    width:1500px;
+    height:900px;
+}
+.whiteSquare{
+    height: 500px;
+    width: 500px;
+    display: inline-block;
+
+}
+.blue{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    outline:1px solid blue;
+}
+.whiteSquare :nth-child(1){
+    margin: 0px 96px 0px 0px;
+}
+.whiteSquare :nth-child(3), .whiteSquare :nth-child(4) {
+    margin: 96px 0px 0px 0px;
+}
+.whiteSquare :nth-child(4){
+    margin-left: 96px;
+}
+.blueLine{
+    width: 980px;
+    height: 96px;
+    display: inline-block;
+    background-color: blue;
+    outline:1px solid blue;
+}
+.whiteLine{
+    width: 980px;
+    height: 96px;
+    display: inline-block;
+}
+.topRight{
+    display: inline-block;
+    width: 990px;
+}
+.bottom{
+    width:1490px;
+}
+.blueLine1{
+    width: 1480px;
+    height: 95px;
+    background-color: blue;
+}
+.whiteLine1{
+    width: 1480px;
+    height: 95px;
+}
