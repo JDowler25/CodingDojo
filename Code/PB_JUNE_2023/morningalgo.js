@@ -8,6 +8,10 @@
 //     }
 // }
 // console.log("there are", countPostives, "positive values");
+
+
+
+//             06-14-23
 /* 
     Given an array and an item to search for,
     return the index where the item is found,
@@ -17,57 +21,57 @@
 
 // R.I.O.T.
 
-const arrA1 = ['a', 'b', 'c'];
-const searchItemA1 = 'c';
-const expectedA1 = 2;
+// const arrA1 = ['a', 'b', 'c'];
+// const searchItemA1 = 'c';
+// const expectedA1 = 2;
 
-const arrA2 = ['a', 'b', 'c'];
-const searchItemA2 = 5;
-const expectedA2 = -1;
+// const arrA2 = ['a', 'b', 'c'];
+// const searchItemA2 = 5;
+// const expectedA2 = -1;
 
-const arrA3 = ['c', 'a', 'b', 'c'];
-const searchItemA3 = 'c';
-const expectedA3 = 0;
+// const arrA3 = ['c', 'a', 'b', 'c'];
+// const searchItemA3 = 'c';
+// const expectedA3 = 0;
 
-const arrA4 = [];
-const searchItemA4 = 5;
-const expectedA4 = -1;
+// const arrA4 = [];
+// const searchItemA4 = 5;
+// const expectedA4 = -1;
 
-//* choose your ALGO ROLES
-// DRIVER 🚗
-// PRESENTER 👨‍🏫
-// NAVIGATOR 🧭
+// //* choose your ALGO ROLES
+// // DRIVER 🚗
+// // PRESENTER 👨‍🏫
+// // NAVIGATOR 🧭
 
-/*
-👉 spend 10 mins writing the pseudocode only!
+// /*
+// 👉 spend 10 mins writing the pseudocode only!
 
-*/
-function indexOf(items, searchItem) {
-    // here we will create a for loop that traverse through items arr.
-    for(let i = 0; i < items.length; i++){
-        // create if statement that compares each element in the items arr to the search item.
-        // if our search item is found we will return the arr index which corresponds to the search item.
-        if(items[i]==searchItem){
-            return i;
-        }
-    // if search item is not found return -1
-    } 
-    return -1;
-}
+// */
+// function indexOf(items, searchItem) {
+//     // here we will create a for loop that traverse through items arr.
+//     for(let i = 0; i < items.length; i++){
+//         // create if statement that compares each element in the items arr to the search item.
+//         // if our search item is found we will return the arr index which corresponds to the search item.
+//         if(items[i]==searchItem){
+//             return i;
+//         }
+//     // if search item is not found return -1
+//     } 
+//     return -1;
+// }
 
-// Tests
-const resultA1 = indexOf(arrA1, searchItemA1);
-console.log(resultA1, 'should be', expectedA1);
+// // Tests
+// const resultA1 = indexOf(arrA1, searchItemA1);
+// console.log(resultA1, 'should be', expectedA1);
 
-const resultA2 = indexOf(arrA2, searchItemA2);
-console.log(resultA2, 'should be', expectedA2);
+// const resultA2 = indexOf(arrA2, searchItemA2);
+// console.log(resultA2, 'should be', expectedA2);
 
-const resultA3 = indexOf(arrA3, searchItemA3);
-console.log(resultA3, 'should be', expectedA3);
+// const resultA3 = indexOf(arrA3, searchItemA3);
+// console.log(resultA3, 'should be', expectedA3);
 
-const resultA4 = indexOf(arrA4, searchItemA4);
-console.log(resultA4, 'should be', expectedA4);
-******    bonus    ********/
+// const resultA4 = indexOf(arrA4, searchItemA4);
+// console.log(resultA4, 'should be', expectedA4);
+// ******    bonus    ********/
 
 /* 
   Given an array and an number which represents the position starting from the back,
@@ -77,55 +81,91 @@ console.log(resultA4, 'should be', expectedA4);
 */
 
 // Last element:
-const arrB1 = ['a', 'b', 'c', 'd'];
-const idxB1 = 1;
-const expectedB1 = 'd';
+// const arrB1 = ['a', 'b', 'c', 'd'];
+// const idxB1 = 1;
+// const expectedB1 = 'd';
 
-// Second to last element:
-const arrB2 = ['a', 'b', 'c', 'd'];
-const idxB2 = 2;
-const expectedB2 = 'c';
+// // Second to last element:
+// const arrB2 = ['a', 'b', 'c', 'd'];
+// const idxB2 = 2;
+// const expectedB2 = 'c';
 
-const arrB3 = ['a', 'b', 'c', 'd'];
-const idxB3 = 0;
-const expectedB3 = null;
+// const arrB3 = ['a', 'b', 'c', 'd'];
+// const idxB3 = 0;
+// const expectedB3 = null;
 
-const arrB4 = ['a', 'b', 'c', 'd'];
-const idxB4 = -1;
-const expectedB4 = null;
+// const arrB4 = ['a', 'b', 'c', 'd'];
+// const idxB4 = -1;
+// const expectedB4 = null;
 
-const arrB5 = [];
-const idxB5 = 2;
-const expectedB5 = null;
-
-
-/*
-👉 spend 5-10 mins writing the pseudocode only!
+// const arrB5 = [];
+// const idxB5 = 2;
+// const expectedB5 = null;
 
 
+// /*
+// 👉 spend 5-10 mins writing the pseudocode only!
 
-*/
 
-function nthLast(items, nthToLast) {
-    // here we will create a for loop that traverse through items arr.
-    for( let i = items.length; i > 0; i--){
-        if
+
+// */
+
+// function nthLast(items, nthToLast) {
+//     // here we will create a for loop that traverse through items arr.
+//     for( let i = items.length; i > 0; i--){
+//         if
+//     }
+//     // your code here
+// }
+
+// // Tests
+// const resultB1 = nthLast(arrB1, idxB1);
+// console.log(resultB1, 'should be', expectedB1);
+
+// const resultB2 = nthLast(arrB2, idxB2);
+// console.log(resultB2, 'should be', expectedB2);
+
+// const resultB3 = nthLast(arrB3, idxB3);
+// console.log(resultB3, 'should be', expectedB3);
+
+// const resultB4 = nthLast(arrB4, idxB4);
+// console.log(resultB4, 'should be', expectedB4);
+
+// const resultB5 = nthLast(arrB5, idxB5);
+// console.log(resultB5, 'should be', expectedB5);
+
+
+
+//           06-15-23
+// Reversing an array
+// Write a function `reverseArray` that takes in an array, and returns the array reversed,
+// try it without creating a new array
+
+var arr1 = [11, 22, 33, 44, 55];
+// expected // [55, 44, 33, 22, 11];
+
+var arr2 = ["a", "b", "c", "d", "e"];
+// ["e", "d", "c", "b", "a"];
+
+// 👉write the pseudo code first
+// DRIVER 🚗
+// PRESENTER 👨‍🏫
+// NAVIGATOR 🧭
+
+function reverseArray(someArray) {
+    for(var i = 0; i < someArray.length/2; i++){
+        var temp = someArray[i]
+        someArray[i]= someArray[someArray.length-1-i]
+        someArray[someArray.length-1-i]=temp
     }
-    // your code here
+    console.log(someArray)
 }
 
-// Tests
-const resultB1 = nthLast(arrB1, idxB1);
-console.log(resultB1, 'should be', expectedB1);
+reverseArray(arr1)
+// 🚨 don't forget to invoke/call the function
 
-const resultB2 = nthLast(arrB2, idxB2);
-console.log(resultB2, 'should be', expectedB2);
+// use a 'for-loop' then refactor it using a 'while' loop
 
-const resultB3 = nthLast(arrB3, idxB3);
-console.log(resultB3, 'should be', expectedB3);
-
-const resultB4 = nthLast(arrB4, idxB4);
-console.log(resultB4, 'should be', expectedB4);
-
-const resultB5 = nthLast(arrB5, idxB5);
-console.log(resultB5, 'should be', expectedB5);
+// we expect to get back...
+// [55, 44, 33, 22, 11];
+// ["e", "d", "c", "b", "a"];
