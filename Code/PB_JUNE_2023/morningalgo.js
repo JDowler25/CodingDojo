@@ -74,10 +74,9 @@
 // ******    bonus    ********/
 
 /* 
-  Given an array and an number which represents the position starting from the back,
-  return the nth-to-last element.
-  
-  JS has the .at() method for this purpose, but solve this algo w/o it.
+Given an array and an number which represents the position starting from the back,
+return the nth-to-last element.
+JS has the .at() method for this purpose, but solve this algo w/o it.
 */
 
 // Last element:
@@ -135,37 +134,77 @@
 // console.log(resultB5, 'should be', expectedB5);
 
 
-
 //           06-15-23
-// Reversing an array
-// Write a function `reverseArray` that takes in an array, and returns the array reversed,
-// try it without creating a new array
+// // Reversing an array
+// // Write a function `reverseArray` that takes in an array, and returns the array reversed,
+// // try it without creating a new array
 
-var arr1 = [11, 22, 33, 44, 55];
-// expected // [55, 44, 33, 22, 11];
+// var arr1 = [11, 22, 33, 44, 55];
+// // expected // [55, 44, 33, 22, 11];
 
-var arr2 = ["a", "b", "c", "d", "e"];
-// ["e", "d", "c", "b", "a"];
+// var arr2 = ["a", "b", "c", "d", "e"];
+// // ["e", "d", "c", "b", "a"];
 
-// 👉write the pseudo code first
-// DRIVER 🚗
-// PRESENTER 👨‍🏫
-// NAVIGATOR 🧭
+// // 👉write the pseudo code first
+// // DRIVER 🚗
+// // PRESENTER 👨‍🏫
+// // NAVIGATOR 🧭
 
-function reverseArray(someArray) {
-    for(var i = 0; i < someArray.length/2; i++){
-        var temp = someArray[i]
-        someArray[i]= someArray[someArray.length-1-i]
-        someArray[someArray.length-1-i]=temp
-    }
-    console.log(someArray)
+// function reverseArray(someArray) {
+//     for(var i = 0; i < someArray.length/2; i++){
+//         var temp = someArray[i]
+//         someArray[i]= someArray[someArray.length-1-i]
+//         someArray[someArray.length-1-i]=temp
+//     }
+//     console.log(someArray)
+// }
+
+// reverseArray(arr1)
+// // 🚨 don't forget to invoke/call the function
+
+// // use a 'for-loop' then refactor it using a 'while' loop
+
+// // we expect to get back...
+// // [55, 44, 33, 22, 11];
+// // ["e", "d", "c", "b", "a"];
+
+
+//        06/16/2023
+
+// Dice Roller
+// Using what we've learned about the Math library in JavaScript, complete the following function that should return a value between 1 through 6 at random.
+
+function d6() {
+    var roll = Math.random(); 
+    // your code here
+    return roll;
 }
+    
+var playerRoll = d6();
+console.log("The player rolled: " + playerRoll);
 
-reverseArray(arr1)
-// 🚨 don't forget to invoke/call the function
+// Consult the Oracle
+// Using the following array, write a function that will answer all of our questions by randomly choosing a response
 
-// use a 'for-loop' then refactor it using a 'while' loop
-
-// we expect to get back...
-// [55, 44, 33, 22, 11];
-// ["e", "d", "c", "b", "a"];
+var lifesAnswers = [
+    "It is certain.",
+    "It is decidedly so.",
+    "Without a doubt.",
+    "Yes – definitely.",
+    "You may rely on it.",
+    "As I see it, yes.",
+    "Most likely.",
+    "Outlook good.",
+    "Yes.",
+    "Signs point to yes.",
+    "Reply hazy, try again.",
+    "Ask again later.",
+    "Better not tell you now.",
+    "Cannot predict now.",
+    "Concentrate and ask again.",
+    "Don't count on it.",
+    "My reply is no.",
+    "My sources say no.",
+    "Outlook not so good.",
+    "Very doubtful."
+];
