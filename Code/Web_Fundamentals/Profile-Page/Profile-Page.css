@@ -10,10 +10,14 @@ nav {
     background-color: black;
     padding: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: white;
     /* min-height: 100px; */
+}
+nav div{
+    display: flex;
+    margin-right: 400px;
 }
 
 .nav-links {
@@ -42,7 +46,7 @@ a {
 }
 
 .btn {
-    background-color: teal;
+    background-color: #17A2B8;
     font-size: 14px;
     padding: 4px 8px;
     box-shadow: 1px 1px black;
@@ -106,7 +110,7 @@ a {
     height: 20px;
 }
 
-h2 {
+.bottom h2 {
     margin-top: 60px;
     margin-bottom: 6px;
     color: black;
@@ -122,7 +126,7 @@ h5 {
     color: black;
 }
 
-p {
+.bottom p {
     display: inline-block;
     text-decoration: underline;
     color: #085394;
@@ -131,13 +135,36 @@ p {
 
 .user-info {
     width: 500px;
-    height: 400px;
     /* background-color: lightgrey; */
     border: 2px solid lightgrey;
     /* border-radius: 13px; */
     margin-top: 20px;
     outline: 10px lightgrey;
-    /* display: flex; */
+    display: block;
+}
+.user-info h2{
+    background-color: #333333;
+    color: white;
+    font-weight: bold;
+    padding: 10px 0px 10px 20px;
+}
+.user-info h3{
+    background-color: white;
+    color: black;
+    width: 95%;
+    padding: 20px 0px 0px 20px;
+}
+.user-info div{
+    display: block;
+}
+.user-info p{
+    background-color: white;
+    color: black;
+    width: 95%;
+    padding: 20px 0px 20px 20px;
+}
+.user-info div :nth-child(2){
+    color:grey;
 }
 
 .rightcolumn {
@@ -161,7 +188,7 @@ p {
 }
 .main-container2{
     width: 300px;
-    /* background-color: lightgrey; */
+    /* height: 500px; */
     border: 2px solid lightgrey;
     /* border-radius: 13px; */
     margin-top: 20px;
@@ -177,18 +204,24 @@ p {
     height: 29%;
     background-color: #333333;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-.user1,
-.user2 {
+.user1{
     width: 100%;
     height: 35%;
     /* background-color: lightgrey; */
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
-
+.user1 div{
+    display: flex;
+    align-items: center;
+}
 .main-container h3 span{
     display: inline-block;
     margin-right: 20px;
@@ -197,27 +230,83 @@ p {
     background-color: lightgrey;
     color: black;
 }
-.user1 img{
-    height: 60%;
+.left img{
+    height: 28px;
+    margin: 10px 0px 0px 5px;
+}
+.right img{
+    height: 28px;
     margin: 10px 0px 0px 5px;
 }
 .user1 p{
     color: black;
     text-decoration: none;
     font-size: 18pt;
+    margin-left: 25px;
 }
 .user2 p{
     color: black;
     text-decoration: none;
     font-size: 18pt;
+    margin-left: 25px;
 }
-.user2 img{
-    height: 60%;
-    margin: 10px 0px 0px 5px;
+.user3 p{
+    color: black;
+    text-decoration: none;
+    font-size: 18pt;
+    margin-left: 25px;
+}
+.user4 p{
+    color: black;
+    text-decoration: none;
+    font-size: 18pt;
+    margin-left: 25px;
+}
+.user5 p{
+    color: black;
+    text-decoration: none;
+    font-size: 18pt;
+    margin-left: 25px;
+}
+.user6 p{
+    color: black;
+    text-decoration: none;
+    font-size: 18pt;
+    margin-left: 25px;
 }
 .main-container2 header{
     background-color: #333333;
     width: 100%;
-    height: 30px;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user3,.user4,.user5,.user6{
+    width: 100%;
+    /* height: 100px; */
+    /* background-color: lightgrey; */
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+span{
+    margin-right: 20px;
+    border: 5px solid lightgrey;
+    border-radius: 50%;
+    background-color: lightgrey;
+    color: black;
+    font-weight: bold;
+}
+hr{
+    background-color: lightgrey;
+}
+.viewMore{
+    background-color: white;
+    width: 100%;
+    text-decoration: underline;
+    color: #085394;
     text-align: center;
 }
