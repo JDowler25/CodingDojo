@@ -174,37 +174,107 @@ JS has the .at() method for this purpose, but solve this algo w/o it.
 // Dice Roller
 // Using what we've learned about the Math library in JavaScript, complete the following function that should return a value between 1 through 6 at random.
 
-function d6() {
-    var roll = Math.random(); 
-    // your code here
-    return roll;
-}
+
+//        06/17/2023
+// function d6() {
+//     var roll = Math.random(); 
+//     // your code here
+//     return roll;
+// }
     
-var playerRoll = d6();
-console.log("The player rolled: " + playerRoll);
+// var playerRoll = d6();
+// console.log("The player rolled: " + playerRoll);
 
-// Consult the Oracle
-// Using the following array, write a function that will answer all of our questions by randomly choosing a response
+// // Consult the Oracle
+// // Using the following array, write a function that will answer all of our questions by randomly choosing a response
 
-var lifesAnswers = [
-    "It is certain.",
-    "It is decidedly so.",
-    "Without a doubt.",
-    "Yes – definitely.",
-    "You may rely on it.",
-    "As I see it, yes.",
-    "Most likely.",
-    "Outlook good.",
-    "Yes.",
-    "Signs point to yes.",
-    "Reply hazy, try again.",
-    "Ask again later.",
-    "Better not tell you now.",
-    "Cannot predict now.",
-    "Concentrate and ask again.",
-    "Don't count on it.",
-    "My reply is no.",
-    "My sources say no.",
-    "Outlook not so good.",
-    "Very doubtful."
-];
+// var lifesAnswers = [
+//     "It is certain.",
+//     "It is decidedly so.",
+//     "Without a doubt.",
+//     "Yes – definitely.",
+//     "You may rely on it.",
+//     "As I see it, yes.",
+//     "Most likely.",
+//     "Outlook good.",
+//     "Yes.",
+//     "Signs point to yes.",
+//     "Reply hazy, try again.",
+//     "Ask again later.",
+//     "Better not tell you now.",
+//     "Cannot predict now.",
+//     "Concentrate and ask again.",
+//     "Don't count on it.",
+//     "My reply is no.",
+//     "My sources say no.",
+//     "Outlook not so good.",
+//     "Very doubtful."
+// ];
+
+
+//        06/19/2023
+/* 
+    Recreate the built in .slice method
+    Given an array, a start index, and an end index,
+    return a NEW array that has only the elements from
+    the start index (inclusive) to the end index (exclusive)
+    What should you do if the provided end index is out of bounds?
+*/
+
+// Create variable arr. to be container for new arr.
+// Create for loop to traverse thru startIdx and < endIdx arr. 
+// .push() that element into the new array 
+// After the loop is done we will return the arr.
+
+//             0    1    2    3    4
+const arr1 = ["a", "b", "c", "d", "e"];
+const startIdx1 = 0;
+const endIdx1 = 5;
+const expected1 = ["a", "b", "c", "d", "e"];
+
+const arr2 = ["a", "b", "c", "d", "e"];
+const startIdx2 = 0;
+const endIdx2 = 1;
+const expected2 = ["a"];
+
+//            0   1    2   3   4
+const arr3 = [12, 24, 36, 48, 60];
+const startIdx3 = 1;
+const endIdx3 = 3;
+const expected3 = [24, 36];
+
+const arr4 = ["a", "b", "c", "d", "e"];
+const startIdx4 = -100;
+const endIdx4 = 100;
+const expected4 = ["a", "b", "c", "d", "e"];
+
+const arr5 = ["a", "b", "c", "d", "e"];
+const startIdx5 = 0;
+const endIdx5 = 0;
+const expected5 = [];
+
+const arr6 = ["a", "b", "c", "d", "e"];
+const startIdx6 = 1;
+const endIdx6 = 1;
+const expected6 = [];
+
+//* choose your ALGO ROLES
+// DRIVER 🚗
+// PRESENTER 👨‍🏫
+// NAVIGATOR 🧭
+
+/*
+    👉 spend 10 mins writing the pseudocode only!
+
+*/
+// RIOT
+
+function slice(items, startIdx, endIdx){
+    let newArray = [];
+    for(let i = startIdx; i< endIdx; i++){
+        if(i >= 0 && i < items.length){
+         newArray.push(items[i])
+        }
+    }
+    return newArray;
+}
