@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Clicker</title>
+    <link rel="stylesheet" href="./buttonClicker.css">
+</head>
+<body>
+    <div class="main-container">
+        <nav>
+            <h1>Dojonary</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search..">
+            </div>
+            <button onclick="logInOut(this)" id="login">Login</button>
+        </nav>
+        <div class="main-content">
+            <div class="left-column">
+                <div class="top-content">
+                    <div class="leftContent">
+                        <h2>ninja</h2>
+                        <h4><em>noun</em></h4>
+                        <p>Plural: <em>ninjas</em></p>
+                        <button onclick="popup()" id="likeButton">13 likes</button>
+                    </div>
+                    <div class="rightContent">
+                        <p> A practitioner skilled in the <span>Japanese</span> art of <span>ninjutsu</span></p>
+                    </div>
+                </div>
+                <div class="bottom-content">
+                    <div class="leftContent">
+                        <h2>ninja</h2>
+                        <h4><em>noun</em></h4>
+                        <p>Plural: <em>ninjas</em></p>
+                        <button onclick="popup()" id="likeButton">37 likes</button>
+                    </div>
+                    <div class="rightContent">
+                        <p>A <span>programmer</span> who breaks down problems with <span>zen</span>-like focus</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="rColumn-content">
+                    <p>Dojonary is defined by <span class="you">YOU</span></p>
+                    <button onclick="remove(this)" id="addDefintion">Add Defintion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./buttonClicker.js"></script>
+</body>
+</html>
