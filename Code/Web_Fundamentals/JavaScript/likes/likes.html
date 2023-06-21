@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likes</title>
+    <link rel="stylesheet" href="./likes.css">
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav>
+        <h1>Network</h1>
+    </nav>
+    <header>Your Feed</header>
+    <!-- main content -->
+    <main>
+        <!-- left column -->
+        <div class="left-column">
+            <!-- User Card -->
+            <div class="userCard">
+                <img src="./icons/user-circle.png" alt="user-circle">
+                <a href="#">Add an avatar</a>
+                <h2>James Doe</h2>
+            </div>
+        </div>
+        <!-- right column -->
+        <div class="right-column">
+            <!-- User 1 -->
+            <div class="content">
+                <div class="top">
+                    <h2>Neil M</h2>
+                    <div class="right">
+                        <h4><span id="likesCount">9</span> like(s)</h4>
+                        <button onclick="increaseLikes('likesCount')" id="likeButton">Like</button>
+                    </div>
+                </div>
+                <p>I just set up this new discord bot, let me know what you all think. <a href="#">link</a></p>
+            </div>
+            <!-- User 2 -->
+            <div class="content">
+                <div class="top">
+                    <h2>Nichole K</h2>
+                    <div class="right">
+                        <h4><span id="likesCount1">12</span> like(s)</h4>
+                        <button onclick="increaseLikes('likesCount1')" id="likeButton">Like</button>
+                    </div>
+                </div>
+                <p>Just finised my <a href="#">next comic</a>, check it out.</p>
+            </div>
+            <!-- User 3 -->
+            <div class="content">
+                <div class="top">
+                    <h2>Jim R</h2>
+                    <div class="right">
+                        <h4><span id="likesCount2">9</span> like(s)</h4>
+                        <button onclick="increaseLikes('likesCount2')" id="likeButton">Like</button>
+                    </div>
+                </div>
+                <p>I can't stop listening to Vincent's new <a href="#">Hello Kitty Island Adventure</a> album. Who else is liking it?</p>
+            </div>
+        </div>
+    </main>
+    <script src="./likes.js"></script>
+</body>
+</html>
