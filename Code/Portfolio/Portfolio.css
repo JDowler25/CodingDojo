@@ -1,36 +1,48 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-}
-/* ----Main Container---- */
-main{
-    background-color: #e0e0e0;
-    height: 100vh;
+    color: white;
+    font-family: NeueMonteal;
 }
 
-/* ----Nav Bar---- */
+/* ---------------------Main Container------------------------- */
+main{
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.parallax-header{
+    background: #000;
+    background: url(./imgs/bg-intro.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* --------------------Nav Bar------------------------ */
 .nav-bar{
     width: inherit;
     height: 45.5px;
     padding-top: 2.1vh;
     display: flex; 
     justify-content: space-between;
-    /* position: fixed; */
     top: 0%;
     bottom: auto;
     left: 0%;
     right: 0%;
-    
 }
+
+
 .nav-bar a{
     text-decoration: none;
     color: black;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: NeueMonteal;
     position: relative;
     font-size: 14px;
 
 }
+
 .nav-bar a::after{
     content: '';
     height: 2px;
@@ -41,9 +53,13 @@ main{
     bottom: -5px;
     transition: 0.5s;
 }
+
+
 .nav-bar a:hover::after{
     width: 100%;
 }
+
+
 .tech-Projects{
     display: flex;
     padding-left: 2.1vh;
@@ -55,33 +71,140 @@ main{
     display: flex;
 }
 
+.name h3{
+    font-family: NeueMonteal;
+    color: black;
+    font-weight: bold;
+}
+
 /* Page Contents */
 .page-content{
-    width: 100vw;
+    width: inherit;
     height: 100vh;
 
 }
-/* ----Home Hero---- */
+
+
+/* --------------------Home Hero----------------------*/
 .home-hero{
     width: inherit;
     height: 470px;
-    /* background-color: white; */
     margin-top: 87px;
     display:flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
+
+
 .main-title-mask{
-    display: flex;
-    justify-content: flex-start;
-    width: 100vw;
-    margin-left: 25vw;
+    width: inherit;
     /* optional */
     text-transform: uppercase;
+    color: white;
 }
+
+
 .main-title-mask h1{
-    font-family: 'Gloock', serif;
+    font-family: NeueMonteal;
     font-size: 6rem;
+    font-weight: bold;
     text-align: center;
     margin-bottom: 0;
 }
+
+
+/* -----------------About Me---------------------------- */
+.about-me{
+    width: inherit;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.text-content > h2{
+    font-size: 42px;
+    font-weight: bold;
+    padding: 5px 100px;
+    margin-top: 25px;
+}
+
+/* ------Image Content------ */
+.img-content{
+    margin: 25px 100px;
+    width: inherit;
+}
+
+.img-content img{
+    width: 290px;
+    height: 270px;
+    border: 2px solid none;
+    border-radius: 50%;
+}
+
+
+/* -------------------Technologies------------------------- */
+.technologies-container{
+    width: inherit;
+    height: 80vh;
+    margin-top: 30vh;
+    background-color: #000;
+}
+
+.technologies-mask{
+    padding: 0px 100px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.technologies-mask > h2{
+    padding: 50px 0px;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.icon > i{
+    margin-right: 65px;
+}
+
+.icon > img{
+    width: 95px;
+    height: 95px;
+    margin-right: 50px;
+}
+
+.technologies-mask hr{
+    color: white;
+    background-color: white;
+    height: 4px;
+}
+
+/* -------------------Projects------------------------- */
+
+.Projects-container{
+    width: inherit;
+    height: 100vh;
+    margin-top: 30vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.Projects-container .carousel{
+    width: 300px;
+    margin: 100px auto 0 ;
+    overflow: visible;
+}
+
+.carousel img{
+    -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+
+}
+

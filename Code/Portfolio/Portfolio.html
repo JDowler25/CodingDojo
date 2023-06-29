@@ -1,82 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaydan Dowler</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- New fonts -->
+    <style>
+        @font-face {
+            font-family: NeueMonteal;
+            src: url(./fonts/NeueMontreal-Bold.otf);
+        }
+    </style>
+    <!-- Style Sheet -->
     <link rel="stylesheet" href="./Portfolio.css">
+    <!-- Icons  -->
+    <script src="https://kit.fontawesome.com/d0ad63a50a.js" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <link rel="stylesheet" href="./jquery-flipster-master/dist/jquery.flipster.min.css">
 </head>
-<body>
+
+<body style="opacity: 1;">
     <!-- Main Container -->
     <main class="container-fluid">
-        <!-- Navigation Bar -->
-        <nav class="nav-bar">
-            <div class="tech-Projects">
-                <div class="technologies">
-                    <a href="#" style="margin-right: 7vw;">Technologies</a>
-                </div>
-                <div class="Projects">
-                    <a href="#">Projects</a>
-                </div>
-            </div>
-            <div class="information">
-                <div class="aboutMe">
-                    <a href="#" style="margin-right: 7vw;">About</a>
-                </div>
-                <div class="Contact">
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-        </nav>
-        <div class="page-content">
-            <div class="home-hero">
-                <div class="main-title-mask">
-                    <h1 class="hh-j">J</h1>
-                    <h1 class="hh-aydan">aydan</h1>
-                </div>
-                <div class="main-title-mask">
-                    <h1 class="hh-d">D</h1>
-                    <h1 class="hh-owler">owler</h1>
-                </div>
-                <div class="main-title-mask" style="margin-left: 35vw">
-                    <h1 class="hh-s">S</h1>
-                    <h1 class="hh-oftware">oftware Engineer</h1>
-                </div>
-            </div>
-            <div class="About-Me">
-                <h2>Bio</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero ab libero est harum molestiae nisi tempora neque veniam ipsa impedit? Architecto nulla laborum quas? Facere, accusantium expedita. Dolorum, eum voluptatibus!
-                Veniam deleniti, iusto facere incidunt amet voluptate quo est doloribus ab tempore sapiente quidem. Maiores ex, in labore consequatur, incidunt consequuntur sit ullam at deleniti eaque iste ab, aut molestiae.
-                Nesciunt eveniet quisquam sint cupiditate veritatis dignissimos, ex reprehenderit deleniti nam distinctio voluptatem ipsam omnis alias tempore sunt qui culpa adipisci dolorem, quae dolor nulla. Doloribus earum nesciunt deserunt fugiat.</p>
-                <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
+        <div class="parallax-header">
+            <!-- Navigation Bar -->
+            <nav class="nav-bar">
+                <div class="tech-Projects">
+                    <div class="technologies">
+                        <a href="#" style="margin-right: 7vw;">Technologies</a>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
+                    <div class="Projects">
+                        <a href="#">Projects</a>
+                    </div>
+                </div>
+                <div class="name">
+                    <h3 style="color: black; font-weight: bold;">Jaydan Dowler</h3>
+                </div>
+                <div class="information">
+                    <div class="aboutMe">
+                        <a href="#" style="margin-right: 7vw;">About</a>
+                    </div>
+                    <div class="Contact">
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="page-content">
+                <div class="home-hero">
+                    <!-- <div class="main-title-mask" style="margin-right: 20vw;">
+                        <h1 class="hh-jaydan">Jaydan</h1>
+                    </div>
+                    <div class="main-title-mask" style="margin-right: 20vw;">
+                        <h1 class="hh-dowler">Dowler</h1>
+                    </div> -->
+                    <div class="main-title-mask">
+                        <h1 class="hh-softwareEngineer">Software Engineer</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="about-me">
+                <div class="text-content">
+                    <h2 class="p1">Welcome to my portfolio! I’m Jaydan Dowler, Software Engineer and versatile
+                        professional with a background in mechanical engineering, specializing in draft and design.
+                        Problem-solving has always been at the core of my strengths, as I’ve honed my skills in creating
+                        innovative solutions. Throughout my journey as a mechanical drafter, I developed the ability to
+                        quickly adapt to new software and technologies, showcasing my aptitude for continuous learning.
+                    </h2>
+                    <h2 class="p2">But there’s more to me than my technical expertise. My personal story is rooted in
+                        humble beginnings, raised in a Latino household. This background instilled in me a deep sense of
+                        pride in my heritage and a drive to make my family proud. It taught me the values of
+                        resilience,determination, and hard work, which I bring to every endeavor.
+                    </h2>
+                    <h2 class="p3">Beyond my professional pursuits, I’ve embraced a diverse range of sports, both
+                        team-based and individual. From basketball and football to wrestling/MMA and motocross, I’ve
+                        experienced the power of teamwork, leadership, self-sufficiency, and self-reliance. These
+                        qualities have not only shaped my athletic career but also seamlessly translate into the
+                        software
+                        engineering industry.
+                    </h2>
+                    <h2 class="p4">My passion for software engineering stems from a desire to tap into my creative
+                        imagination and develop new products. With an unwavering commitment to excellence, I strive to
+                        push the boundaries of innovation and deliver exceptional outcomes. Just as I pursued perfection
+                        in my sports career, I bring the same dedication to my work as a software engineer.
+                    </h2>
+                    <h2 class="p5">Explore my portfolio to witness the fusion of my technical expertise, creative
+                        thinking, and unwavering commitment to excellence. Let’s connect and embark on a journey of
+                        innovation together!
+                    </h2>
+                    <div class="img-content" style="display: flex; justify-content: space-between;">
+                        <img src="./imgs/Screenshot 2023-06-28 130840.jpg" alt="code">
+                        <img src="./imgs/7376627E-AD6E-443A-B414-501F1EEB1F37.jpg" alt="USJ">
+                        <img src="./imgs/Screenshot 2023-06-27 150359.jpg" alt="welding">
+                        <img src="./imgs/C2814D59-1629-4CB8-9C58-B837A3722F5F.jpg" alt="me_flying">
+                    </div>
+                </div>
+            </div>
+            <div class="technologies-container">
+                <div class="technologies-mask">
+                    <h2>Technologies</h2>
+                </div>
+                <div class="technologies-mask">
+                    <h3 class="front-end">Front End</h3>
+                    <div class="icon" style="display:flex; align-items: center;">
+                        <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f;"></i>
+                        <i class="fa-brands fa-html5 fa-6x" style="color: #e44c25;"></i>
+                        <i class="fa-brands fa-css3-alt fa-6x" style="color: #264de4;"></i>
+                        <i class="fa-brands fa-bootstrap fa-6x" style="color: #8512fb; margin-right: 55px;"></i>
+                        <img src="./icons/react-course-icon.svg" alt="react">
+                    </div>
+                    <hr>
+                </div>
+                <div class="technologies-mask">
+                    <h3 class="back-end">Back End</h3>
+                    <div class="icon" style="display:flex; align-items: center;">
+                        <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f; margin-right: 60px;"></i>
+                        <img src="./icons/Python-1024x1024.png" alt="python">
+                        <img src="./icons/jquery-course-icon.svg" alt="jquery">
+                        <img src="./icons/nodejs-course-icon.svg" alt="nodeJS">
+                        <img src="./icons/c-onsite-programming-course-icon.svg" alt="C#">
+                    </div>
+                    <hr>
+                </div>
+                <div class="technologies-mask">
+                    <h3 class="Databases">Databases</h3>
+                    <div class="icon" style="display:flex; align-items: center;">
+                        <img src="./icons/mysql-course-icon.svg" alt="mysql">
+                        <img src="./icons/mongo-db-course-icon.svg" alt="mongoDB">
+                    </div>
+                </div>
+            </div>
+            <div class="Projects-container">
+                <div class="carousel">
+                    <ul>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="contactMe-container">
             </div>
         </div>
-
+        </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- BootStrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="./jquery-flipster-master/dist/jquery.flipster.min.js"></script>
+    <script>
+        $('.carousel').flipster({
+            style:'carousel',
+            spacing: -0.3,
+            
+        });
+    </script>
 </body>
+
 </html>
