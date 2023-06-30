@@ -17,10 +17,14 @@
     </style>
     <!-- Style Sheet -->
     <link rel="stylesheet" href="./Portfolio.css">
+    <link rel="stylesheet" href="./jquery-flipster-master/dist/jquery.flipster.min.css">
+    <link rel="stylesheet" href="./lightslider-master/dist/css/lightslider.min.css">
     <!-- Icons  -->
     <script src="https://kit.fontawesome.com/d0ad63a50a.js" crossorigin="anonymous"></script>
     <!-- Jquery -->
-    <link rel="stylesheet" href="./jquery-flipster-master/dist/jquery.flipster.min.css">
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="./lightslider-master/dist/js/lightslider.js"></script>
 </head>
 
 <body style="opacity: 1;">
@@ -31,10 +35,10 @@
             <nav class="nav-bar">
                 <div class="tech-Projects">
                     <div class="technologies">
-                        <a href="#" style="margin-right: 7vw;">Technologies</a>
+                        <a href="#technologies-section" style="margin-right: 7vw;">Technologies</a>
                     </div>
                     <div class="Projects">
-                        <a href="#">Projects</a>
+                        <a href="#project-section">Projects</a>
                     </div>
                 </div>
                 <div class="name">
@@ -42,10 +46,10 @@
                 </div>
                 <div class="information">
                     <div class="aboutMe">
-                        <a href="#" style="margin-right: 7vw;">About</a>
+                        <a href="#about-me-section" style="margin-right: 7vw;">About</a>
                     </div>
                     <div class="Contact">
-                        <a href="#">Contact</a>
+                        <a href="#contact-me">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -62,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div class="about-me">
+            <div class="about-me" id="about-me-section">
                 <div class="text-content">
                     <h2 class="p1">Welcome to my portfolio! I’m Jaydan Dowler, Software Engineer and versatile
                         professional with a background in mechanical engineering, specializing in draft and design.
@@ -70,7 +74,12 @@
                         innovative solutions. Throughout my journey as a mechanical drafter, I developed the ability to
                         quickly adapt to new software and technologies, showcasing my aptitude for continuous learning.
                     </h2>
-                    <h2 class="p2">But there’s more to me than my technical expertise. My personal story is rooted in
+                    <h2 class="p1">Now, as I embark on my exciting new journey as a software engineer, I'm fueled by a
+                        passion for creative problem-solving and the opportunity to develop cutting edge products. Join
+                        me as I push the boundaries of innovation, combining my technical expertise with a drive for
+                        excellence.
+                    </h2>
+                    <!-- <h2 class="p2">But there’s more to me than my technical expertise. My personal story is rooted in
                         humble beginnings, raised in a Latino household. This background instilled in me a deep sense of
                         pride in my heritage and a drive to make my family proud. It taught me the values of
                         resilience,determination, and hard work, which I bring to every endeavor.
@@ -90,80 +99,182 @@
                     <h2 class="p5">Explore my portfolio to witness the fusion of my technical expertise, creative
                         thinking, and unwavering commitment to excellence. Let’s connect and embark on a journey of
                         innovation together!
-                    </h2>
-                    <div class="img-content" style="display: flex; justify-content: space-between;">
-                        <img src="./imgs/Screenshot 2023-06-28 130840.jpg" alt="code">
-                        <img src="./imgs/7376627E-AD6E-443A-B414-501F1EEB1F37.jpg" alt="USJ">
-                        <img src="./imgs/Screenshot 2023-06-27 150359.jpg" alt="welding">
-                        <img src="./imgs/C2814D59-1629-4CB8-9C58-B837A3722F5F.jpg" alt="me_flying">
+                    </h2> -->
+                    <div class="img-content">
+                        <div class="carousel">
+                            <ul>
+                                <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#">
+                                </li>
+                                <li><img src="./imgs/7376627E-AD6E-443A-B414-501F1EEB1F37.jpg" alt="#"></li>
+                                <li><img src="./imgs/C2814D59-1629-4CB8-9C58-B837A3722F5F.jpg" alt="#"></li>
+                                <li><img src="./imgs/Screenshot 2023-06-27 150359.jpg" alt="#"></li>
+                                <li><img src="./imgs/IMG_0158.jpg" alt="#"></li>
+                                <li><img src="./imgs/./IMG_2321.jpg" alt="#"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="technologies-container">
+            <div class="technologies-container" id="technologies-section">
                 <div class="technologies-mask">
                     <h2>Technologies</h2>
                 </div>
                 <div class="technologies-mask">
                     <h3 class="front-end">Front End</h3>
                     <div class="icon" style="display:flex; align-items: center;">
-                        <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f;"></i>
-                        <i class="fa-brands fa-html5 fa-6x" style="color: #e44c25;"></i>
-                        <i class="fa-brands fa-css3-alt fa-6x" style="color: #264de4;"></i>
-                        <i class="fa-brands fa-bootstrap fa-6x" style="color: #8512fb; margin-right: 55px;"></i>
-                        <img src="./icons/react-course-icon.svg" alt="react">
+                        <div>
+                            <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f;"></i>
+                            <p>JavaScript</p>
+                        </div>
+                        <div>
+                            <i class="fa-brands fa-html5 fa-6x" style="color: #e44c25;"></i>
+                            <p>HTML</p>
+                        </div>
+                        <div>
+                            <i class="fa-brands fa-css3-alt fa-6x" style="color: #264de4;"></i>
+                            <p>CSS</p>
+                        </div>
+                        <div>
+                            <i class="fa-brands fa-bootstrap fa-6x" style="color: #8512fb;"></i>
+                            <p>BootStrap</p>
+                        </div>
+                        <div>
+                            <img src="./icons/react-course-icon.svg" alt="react">
+                            <p>React</p>
+                        </div>
                     </div>
                     <hr>
                 </div>
                 <div class="technologies-mask">
                     <h3 class="back-end">Back End</h3>
                     <div class="icon" style="display:flex; align-items: center;">
-                        <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f; margin-right: 60px;"></i>
-                        <img src="./icons/Python-1024x1024.png" alt="python">
-                        <img src="./icons/jquery-course-icon.svg" alt="jquery">
-                        <img src="./icons/nodejs-course-icon.svg" alt="nodeJS">
-                        <img src="./icons/c-onsite-programming-course-icon.svg" alt="C#">
+                        <div>
+                            <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f; ">
+                            </i>
+                            <p>JavaScript</p>
+                        </div>
+                        <div>
+                            <img src="./icons/Python-1024x1024.png" alt="python">
+                            <p>Python</p>
+                        </div>
+                        <div>
+                            <img src="./icons/jquery-course-icon.svg" alt="jquery">
+                            <p>Jquery</p>
+                        </div>
+                        <div>
+                            <img src="./icons/nodejs-course-icon.svg" alt="nodeJS">
+                            <p>Node.JS</p>
+                        </div>
+                        <div>
+                            <img src="./icons/c-onsite-programming-course-icon.svg" alt="C#">
+                            <p>C#</p>
+                        </div>
                     </div>
                     <hr>
                 </div>
                 <div class="technologies-mask">
                     <h3 class="Databases">Databases</h3>
                     <div class="icon" style="display:flex; align-items: center;">
-                        <img src="./icons/mysql-course-icon.svg" alt="mysql">
-                        <img src="./icons/mongo-db-course-icon.svg" alt="mongoDB">
+                        <div>
+                            <img src="./icons/mysql-course-icon.svg" alt="mysql">
+                            <p>MySQL</p>
+                        </div>
+                        <div>
+                            <img src="./icons/mongo-db-course-icon.svg" alt="mongoDB">
+                            <p>MongoDB</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="Projects-container">
-                <div class="carousel">
-                    <ul>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                        <li><img src="./imgs/66813027463__6B0579E6-D753-4FDA-89BD-749EABFC6213.jpg" alt="#"></li>
-                    </ul>
+            <div class="Projects-container" id="project-section">
+                <h2>Projects</h2>
+                <!-- slider------------->
+                <ul id="autoWidth" class="cs-hidden" style="display: flex;">
+                    <!-- -----------1------------- -->
+                    <li class="item-a">
+                        <div class="box">
+                            <p class="Profile-page">Profile Page</p>
+                            <!-- Project -->
+                            <img src="./imgs/Screenshot 2023-06-29 123527.jpg" class="project">
+                            <!-- Technologies used  -->
+                            <div class="tech-used">
+                                <div class="tech-icons">
+                                    <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f;"></i>
+                                    <i class="fa-brands fa-html5 fa-6x" style="color: #e44c25;"></i>
+                                    <i class="fa-brands fa-css3-alt fa-6x" style="color: #264de4;"></i>
+                                </div>
+                                <!-- Project description -->
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eum asperiores
+                                    numquam esse minima, molestias, debitis cumque magnam, adipisci soluta dignissimos
+                                    nulla ipsa veniam unde provident totam dolores at accusantium.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- -----------2------------- -->
+                    <li class="item-a">
+                        <div class="box">
+                            <p class="Profile-page">Likes Button</p>
+                            <!-- Project -->
+                            <img src="./imgs/Screenshot 2023-06-29 233431.jpg" class="project">
+                            <!-- Technologies used  -->
+                            <div class="tech-used">
+                                <div class="tech-icons">
+                                    <i class="fa-brands fa-square-js fa-6x" style="color: #f0db4f;"></i>
+                                    <i class="fa-brands fa-html5 fa-6x" style="color: #e44c25;"></i>
+                                    <i class="fa-brands fa-css3-alt fa-6x" style="color: #264de4;"></i>
+                                </div>
+                                <!-- Project description -->
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eum asperiores
+                                    numquam esse minima, molestias, debitis cumque magnam, adipisci soluta dignissimos
+                                    nulla ipsa veniam unde provident totam dolores at accusantium.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- slider box -->
+            </div>
+        </div>
+        <!------------------Contact Me------------------------------>
+        <div class="contactMe-container" id="contact-me">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h2 class="sub-title">Contact Me</h2>
+                        <p><i class="fa-solid fa-paper-plane"></i> contact@example.com</p>
+                        <p><i class="fa-solid fa-square-phone"></i> 012345678</p>
+                        <div class="social-icons">
+                            <a href="https://facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://twitter.com/"><i class="fa-brands fa-twitter-square"></i></a>
+                            <a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                        <a href="#" download class="btn btn2">Download CV</a>
+                    </div>
+                    <div class="contact-right">
+                        <form action="">
+                            <input type="text" name="Name" placeholder="Your Name" id="" required>
+                            <input type="email" name="email" placeholder="Your Email" id="" required>
+                            <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            </div>
-            <div class="contactMe-container">
-            </div>
-        </div>
         </div>
     </main>
+    <script src="./portfolio.js" type="text/javascript"></script>
     <!-- BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="./jquery-flipster-master/dist/jquery.flipster.min.js"></script>
     <script>
         $('.carousel').flipster({
-            style:'carousel',
+            style: 'carousel',
             spacing: -0.3,
-            
         });
     </script>
 </body>

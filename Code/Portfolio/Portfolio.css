@@ -3,6 +3,12 @@
     padding: 0;
     color: white;
     font-family: NeueMonteal;
+    box-sizing: border-box;
+}
+
+body{
+    background: #080808;
+    color: #fff;
 }
 
 /* ---------------------Main Container------------------------- */
@@ -130,31 +136,43 @@ main{
 
 
 .text-content > h2{
-    font-size: 42px;
+    font-size: 48px;
     font-weight: bold;
-    padding: 5px 100px;
+    padding: 10px 200px;
     margin-top: 25px;
 }
 
 /* ------Image Content------ */
 .img-content{
-    margin: 25px 100px;
     width: inherit;
+    height: 100vh;
+    /* margin-top: 30vh; */
+    background-color: #000;
+    overflow: hidden;
 }
-
-.img-content img{
+.img-content .carousel{
+    width: 300px;
+    margin: 100px auto 0 ;
+    overflow: visible;
+}
+.carousel img{
+    -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    
+}
+/* .img-content img{
     width: 290px;
     height: 270px;
     border: 2px solid none;
     border-radius: 50%;
-}
+} */
 
 
 /* -------------------Technologies------------------------- */
 .technologies-container{
     width: inherit;
-    height: 80vh;
-    margin-top: 30vh;
+    height: 100vh;
+    /* margin-top: 30vh; */
+    /* padding-top: 250px; */
     background-color: #000;
 }
 
@@ -171,14 +189,27 @@ main{
     font-weight: bold;
 }
 
-.icon > i{
-    margin-right: 65px;
+.tech-labels{
+    margin-top: 10px;
+    width: 75%;
+    display: flex;
+    align-items:center;
+    text-align: center; 
+    justify-content: space-between;
+}
+.icon > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 8vw;
 }
 
-.icon > img{
+.icon > div> i{
+}
+
+.icon > div> img{
     width: 95px;
     height: 95px;
-    margin-right: 50px;
 }
 
 .technologies-mask hr{
@@ -188,23 +219,153 @@ main{
 }
 
 /* -------------------Projects------------------------- */
-
 .Projects-container{
+    /* margin-top: 30vh; */
+    /* padding-top: 250px; */
     width: inherit;
     height: 100vh;
-    margin-top: 30vh;
     background-color: #000;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.Projects-container .carousel{
+.Projects-container ul{
+    list-style: none;
+}
+.Projects-container a{
+    text-decoration: none;
+}
+
+
+.Projects-container h2{
+    padding: 50px 0px;
+    font-size: 42px;
+    font-weight: bold;
+}
+.box{
+    width: 350px;
+    height: 610px;
+    background-color: rgb(51, 50, 50);
+    border-radius: 10px;
+    box-shadow: 2px 10px 12px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin: 20px 10px;
+}
+
+.project{
+    height: 350px;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.tech-used{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 300px;
-    margin: 100px auto 0 ;
-    overflow: visible;
+}
+.tech-icons{
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
 }
 
-.carousel img{
-    -webkit-box-reflect: below 20px linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+.tech-used p{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Profile-page{
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+/* ------------------About Me------------------------- */
+
+.contactMe-container{
+    width: inherit;
+    height: 100vh;
+    padding-top: 250px;
+    background-color: #000;
+}
+
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{ 
+    color: #9B9B9B;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.social-icons{
+    margin-top: 30px;
 
 }
 
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover{
+    transform: translateY(-5px);
+    color: #ff004f;
+}
+
+.btn.btn2{
+    display: inline-block;
+    background: #262626;
+    color: white;
+    transition: transform 0.5s;
+}
+
+.btn.btn2:hover{
+    background: #9B9B9B;
+    color: white;
+
+
+}
+.contact-right form{
+    width: 100%;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+form .btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.contact-left .btn2{
+    margin-top: 20px;
+}
