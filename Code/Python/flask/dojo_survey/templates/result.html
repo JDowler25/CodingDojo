@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/result.css') }}">
+</head>
+<body>
+    <h1>Form Submission Result</h1>
+    <div class="result">
+        <p><span>Name:</span>{{session['name']}}</p>
+        <p><span>Dojo location:</span>{{session['location']}}</p>
+        <p><span>Favorite Language:</span>{{session['language']}}</p>
+        <p><span>Comments:</span>{{session['comments']}}</p>
+        <a href="{{ url_for('form') }}">Back</a>
+    </div>
+</body>
+</html>
