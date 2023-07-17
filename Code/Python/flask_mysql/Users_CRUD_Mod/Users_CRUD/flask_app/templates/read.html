@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Created_At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.first_name + " " + user.last_name }}</td>
+                <td>{{ user.user_email }}</td>
+                <td>{{ user.created_at }}</td>
+                <td>
+                    <!-- <a href="/{{ user.user_id }}/user_profile">Show</a>
+                    <a href="/{{ user.user_id }}/edit">Edit</a>
+                    <a href="/user/{{ user.user_id }}/destroy">Delete</a> -->
+                    <form action="/{{ user.user_id }}/user_profile">
+                        <input type="submit" name="Show" id="Show"  value="Show">
+                    </form>
+                    <form action="/{{ user.user_id }}/edit">
+                        <input type="submit" name="Edit" id="Edit" value="Edit">
+                    </form>
+                    <form action="/user/{{ user.user_id }}/destroy">
+                        <input type="submit" name="Delete" id="Delete" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/create">Create User</a>
+</body>
+</html>
