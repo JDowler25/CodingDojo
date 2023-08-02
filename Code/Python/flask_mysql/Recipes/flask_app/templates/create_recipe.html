@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a New Recipe!</h1>
+    <div>
+        <form action="/logout" class="btn"> <button>Logout</button></form>
+        <form action="/profile" class="btn"> <button>back to recipes</button></form>
+    </div>
+    <form action="/recipe/create" method="POST">
+        <div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <label for="decription">Description:</label>
+                <textarea id="description" class="textarea" name="description" rows="10" cols="30" required></textarea>
+            </div>
+            <div>
+                <label for="instruction">Instructions:</label>
+                <textarea id="instruction" class="textarea" name="instruction" rows="10" cols="30" required></textarea>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="date_made">Date Cooked/Made:</label>
+                <input type="date" id="date_made" name="date_made" value="2023-07-19" min="1900-01-01" max="2050-12-31">      
+            </div>
+            <div>              
+                <label for="under_30">Under 30 minutes?</label> 
+                <input type="radio" name="under_30" id="under_30" value="1" required>
+                <label for="yes">Yes</label>
+                <input type="radio" name="under_30" id="under_30" value="0" required>
+                <label for="no">No</label> 
+            </div>
+            <input type="submit" value="Submit" class="btn">
+        </div>
+    </form>
+</body>
+</html>

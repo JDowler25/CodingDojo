@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, <span>{{user.first_name}}</span></h1>
+    <div>
+        <form action="/logout" class="btn"> <button>Logout</button></form>
+        <form action="/recipe/new" class="btn"> <button>+ Create</button></form>
+        <h3>All posted recipes:</h3>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Under</th>
+                <th>Posted By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{recipe.name}}</td>
+                {% if recipe.under_30 == 1%}
+                <td>Yes</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+                <td>{{recipe.user.first_name}}</td>
+                {% if session['user_id'] == recipe.user.id %}
+                <td><a href="/recipe/edit/{{recipe.id}}">edit</a></td>
+                <!-- <td><a href="/">edit</a></td> -->
+                <!-- <td><a href="/recipe/delete/{{recipe.id}}"></a> delete</td> -->
+                <td><a href="/">delete</a></td>
+                <td><a href="/recipe/view/{{recipe.id}}">view</a></td>
+                {% else %}
+                <td><a href="/recipe/view/{{recipe.id}}">view</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

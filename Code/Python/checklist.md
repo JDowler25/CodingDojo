@@ -52,7 +52,7 @@ pipenv shell
 
 ```Py
 from flask_app import app
-
+from flask_app.controllers import controller_user
 #TODO import controllers
 
 #MAKE SURE THIS IS AT THE BOTTOM
@@ -83,7 +83,7 @@ class MySQLConnection:
         self.connection = connection
     # the method to query the database
     def query_db(self, query:str, data:dict=None):
-        with self.connection.cursor() as cursor:
+        with self.connection.cursor() as cursor: 
             try:
                 query = cursor.mogrify(query, data)
                 print("Running Query:", query)
@@ -118,6 +118,12 @@ def connectToMySQL(db):
 # import the function that will return an instance of a connection
 #       folder  folder  file                    function
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app import DATABASE, bcrypt
+from flask import flash
+import re
+EMAILREGEX = re.compile(r'^[a-zA-Z0-9.+-]+@[a-zA-Z0-9._-]+.[a-zA-Z]+$')
+PASSWORD_REGEX = re.compile(r'^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$ %^&*-]).{8,}$')
+NAME_REGEX = re.compile(r'^[a-zA-Z]+$')
 # model the class after the users table from  database
 class User:
     # should change db based on schema you're trying to access
@@ -196,8 +202,9 @@ class User:
 ```PY
 from flask_app import app
 from flask import render_template, request, redirect, session
-
+from flask_bcrypt import Bcrypt
 from flask_app.models.model_user import User
+bcrypt = Bcrypt(app)
 
 #THIS WILL MOVE
 
@@ -260,7 +267,10 @@ def delete(id):
 ## create  \_\_init__.py file
 ```PY
 from flask import Flask
-#app = instance of Flask(class)
+from flask_bcrypt import Bcrypt 
+DATABASE = 'login_registration'
+
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.secret_key = "do not forget to add secret key"
 ```

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, <span>{{user.first_name}}</span></h1>
+    <div>
+        <form action="/logout" class="btn"> <button>Logout</button></form>
+        <form action="/profile" class="btn"> <button>Back to recipes</button></form>
+    </div>
+    <h2>{{recipe.name}}</h2>
+    <h4>{{recipe.user.first_name}}</h4>
+    <div>
+        <div>
+            <label for="description">Description:</label>
+            <p>{{recipe.description}}</p>
+        </div>
+        <div>
+            <label for="under_30">Under 30 Minutes?</label>
+            {% if recipe.under_30 == 0 %}
+            <p>no</p>
+            {% else %}
+            <p>yes</p>
+            {% endif %}
+        </div>
+        <div>
+            <label for="instruction">Instructions:</label>
+            <p>{{recipe.instruction}}</p>
+        </div>
+        <div>
+            <label for="date_made">Date Made:</label>
+            <p>{{recipe.date_made}}</p>
+        </div>
+    </div>
+</body>
+</html>

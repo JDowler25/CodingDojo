@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Competitive Edge</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--------------------------------GOOGLE FONTS---------------------------------------->
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!----------------------------------BOOTSTRAP--------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        .services__card{
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(17, 17, 17, 0.6) 100%), url({{ url_for('static', filename='img/draft_board.png')}});
+        }
+        .services__card:nth-child(2){
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(17, 17, 17, 0.6) 100%), url({{ url_for('static', filename='img/pexels-raquel-tinoco-5286746.jpg')}});
+        }
+    </style>
+</head>
+<body>
+    <!--------------------NAVBAR SECTION-------------------------->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fa-solid fa-basketball"></i>COMPETITIVE EDGE</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">
+                        Home
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">
+                        Rankings
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">
+                        Support
+                    </a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/login" class="button">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-----------------------HERO SECTION-------------------------->
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>FOR EVERY FANTASY MANAGER TRYING TO FIND THEIR COMPETITIVE EDGE!</h1>
+                <p>The Competitive Edge is the elite platform that helps your team take the next step into building a league winning dynasty.</p>
+                <button class="main__btn"><a href="/signup">JOIN NOW</a></button>
+            </div>
+            <div class="main__img--container">
+                <img src="{{url_for('static',filename='img/Stock_img.png')}}" alt="Stock_img" id="main__img">
+            </div>
+        </div>
+    </div>
+
+    <!------------------SERVICES SECTION-------------------------->
+    <div class="services">
+        <h1>See what the hype is about</h1>
+        <div class="services__container">
+            <div class="services__card">
+                <h2>Custom Draft Boards</h2>
+                <p>Create a custom Draft Board tailor to your league settings!</p>
+                <button class="mt-3"><a href="/signup">Get Started</a></button>
+            </div>
+            <div class="services__card">
+                <h2>Are you Ready?</h2>
+                <p>Take your game to the next level</p>
+                <button ><a href="/signup">Get Started</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------FOOTER SECTION-------------------------->
+    <div class="footer__container">
+        <div class="social__media">
+            <div class="social__media--wrap">
+                <div class="footer__logo">
+                    <a href="/" id="footer__logo"><i class="fa-solid fa-basketball"></i>COMPETITIVE EDGE</a>
+                </div>
+                <p class="website_right">COMPETITIVE EDGE 2023. All rights reserved</p>
+                <div class="social__icons">
+                    <a href="" class="social__icon--links" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social__icon--links" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="social__icon--links" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social__icon--links" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="social__icon--links" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='js/app.js')}}></script>
+</body>
+</html> 
