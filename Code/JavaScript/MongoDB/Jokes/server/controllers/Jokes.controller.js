@@ -1,5 +1,5 @@
 // 1. import the model
-const Destination = require('../models/destination.model')
+const Jokes = require('../models/Jokes.model')
 
 // 2. export all the functions with placeholder
 module.exports.apiTest = (req, res) => {
@@ -7,49 +7,48 @@ module.exports.apiTest = (req, res) => {
 }
 
 // Example: 
-module.exports.allDest = (req, res) => {
-    Destination.find()// returns lists of objects
-        .then(destList => res.json(destList))
+module.exports.allJokes = (req, res) => {
+    Jokes.find()// returns lists of objects
+        .then(jokeList => res.json(jokeList))
         .catch((err) => {
             res.json(err)
         });
 }
 
-module.exports.oneDest = (req, res) => {
-    Destination.findOne({ _id: req.params.id })
-        .then(oneDest => res.json(oneDest))
+module.exports.oneJokes = (req, res) => {
+    Jokes.findOne({ _id: req.params.id })
+        .then(oneJoke => res.json(oneJoke))
         .catch((err) => {
             res.json(err)
         });
 }
 
-module.exports.addDest = (req, res) => {
-    Destination.create(req.body)
-    .then(newDest => res.json(newDest))
+module.exports.addJokes = (req, res) => {
+    Jokes.create(req.body)
+    .then(newJoke => res.json(newJoke))
     .catch((err) => {
         res.json(err)
     });
 }
 
-module.exports.updateDest = (req, res) => {
-    Destination.findOneAndUpdate(
+module.exports.updateJokes = (req, res) => {
+    Jokes.findOneAndUpdate(
         {_id: req.params.id},//criteria,
         req.body,//info to be updated
         {new:true, runValidators:true}
         //new: specify the return response
         //runValidators: enable validation in update
         )
-        .then(updatedDest => res.json(updatedDest))
+        .then(updatedJoke => res.json(updatedJoke))
         .catch((err) => {
             res.json(err)
         });
 }
 
-module.exports.deleteDest = (req, res) => {
-    Destination.deleteOne({ _id: req.params.id })
+module.exports.deleteJokes = (req, res) => {
+    Jokes.deleteOne({ _id: req.params.id })
         .then(status => res.json(status))
         .catch((err) => {
             res.json(err)
         });
 }
-
