@@ -33,7 +33,7 @@ paste in .gitignore
 paste in .env
 ```
 PORT=8000
-URI=mongodb+srv://GBann1:Qa2z2xbGDzwx8WIo@my_db.0rrevlf.mongodb.net/?retryWrites=true&w=majority
+URI=mongodb+srv://jaydandowler:1Supercross@cluster0.istweo7.mongodb.net/?retryWrites=true&w=majority
 ```
 #### Once create-react-app is complete, finish installing dependencies
 11. cd client
