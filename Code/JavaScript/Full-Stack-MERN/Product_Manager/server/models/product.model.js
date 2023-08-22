@@ -13,6 +13,9 @@ const ProductSchema = new mongoose.Schema({ //Table
         min: [0, "Rating must be between 0 and 10"],
         max: [10, "Rating must be between 1 and 10"],
     },
+    imageUrl: {
+        type: String,
+    },
     description: {
         type: String,
     },
