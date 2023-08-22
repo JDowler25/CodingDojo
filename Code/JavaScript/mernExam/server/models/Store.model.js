@@ -10,8 +10,8 @@ const StoreFinderSchema = new mongoose.Schema({ //Table
     },
     number: {
         type: Number,
-        required: [true, "Rating is required"],
-        min: [0, "Store number must be greater than 0"],
+        required: [true, "Store Number is required"],
+        min: [1, "Must be a unique number greater than 0"],
     },
     open: {
         type: Boolean,

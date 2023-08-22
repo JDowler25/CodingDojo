@@ -16,5 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // 5. import routes (after routes are done -- may need to complete the models & the backbone of the controller first)
+require("./routes/Store.routes")(app)
 // 3. listen to the port at the end
 app.listen(port, ()=>console.log(`Listening on port: 8000`))

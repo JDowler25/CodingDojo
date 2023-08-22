@@ -10,7 +10,7 @@ const CreatePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    
+     
     // setErrors({});
   
     axios.post('http://localhost:8000/api/authors', { name: name })
