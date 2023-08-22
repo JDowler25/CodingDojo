@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema({ //Table
     price: {
         type: Number,
         required: [true, "Rating is required"],
-        min: [1, "Rating must be between 1 and 10"],
+        min: [0, "Rating must be between 0 and 10"],
         max: [10, "Rating must be between 1 and 10"],
     },
     description: {
