@@ -87,18 +87,7 @@ const technologies = [
     name: "Three JS",
     icon: threejs,
   },
-  // {
-  //   name: "git",
-  //   icon: git,
-  // },
-  // {
-  //   name: "figma",
-  //   icon: figma,
-  // },
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
+
 ];
 
 const experiences = [
@@ -145,7 +134,7 @@ const testimonials = [
 
 const projects = [
   {
-    name: "[Project Name]",
+    name: "Fantasy BasketBall App",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
     tags: [
