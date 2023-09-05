@@ -155,7 +155,7 @@ const projects = [
     source_code_link: "#",
   },
   {
-    name: "[Project Name]",
+    name: "Job Dating App",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
     tags: [
@@ -176,7 +176,7 @@ const projects = [
     source_code_link: "#",
   },
   {
-    name: "[Project Name]",
+    name: "Real Estate Investment App",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
     tags: [
