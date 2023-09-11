@@ -1,3 +1,5 @@
+// Pair programmed with Carter
+
 package com.jaydandowler.burger_tracker.repositories;
 import java.util.List;
 
@@ -10,10 +12,5 @@ import com.jaydandowler.burger_tracker.models.Burger;
 public interface BurgerRepository extends CrudRepository<Burger, Long> {
             // this method retrieves all the books from the database
             List<Burger> findAll();
-            // this method finds Burgers with descriptions containing the search string
-            List<Burger> findByDescriptionContaining(String search);
-            // this method counts how many titles contain a certain string
-            Long countByTitleContaining(String search);
-            // this method deletes a Burger that starts with a specific title
-            Long deleteByTitleStartingWith(String search);
+
 }

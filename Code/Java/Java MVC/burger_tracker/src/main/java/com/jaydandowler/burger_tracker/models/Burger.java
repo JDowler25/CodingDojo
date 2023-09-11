@@ -1,4 +1,4 @@
-// Pair programmed with Jayden
+// Pair programmed with Carter
 
 package com.jaydandowler.burger_tracker.models;
 import java.util.Date;
@@ -10,7 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,18 +22,23 @@ public class Burger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+
+    @NotNull(message = "Burger name must be between 5 and 200 characters")
+    @NotEmpty
     @Size(min = 5, max = 200)
-    private String title;
-    @NotNull
+    private String burgerName;
+    @NotNull(message = "Restaurant name must be between 5 and 200 characters")
+    @NotEmpty
     @Size(min = 5, max = 200)
-    private String description;
-    @NotNull
-    @Size(min = 3, max = 40)
-    private String language;
-    @NotNull
-    @Min(100)
-    private Integer numberOfPages;
+    private String restaurantName;
+    @NotNull(message = "Rating must be 1 out of 5")
+    @Min(1)
+    @Max(5)
+    private Integer rating;
+    @NotNull(message = "Notes must be between 3 and 200 characters")
+    @NotEmpty
+    @Size(min = 3, max = 200)
+    private String notes;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -41,11 +48,11 @@ public class Burger {
     
     public Burger() {
     }
-    public Burger(String title, String desc, String lang, int pages) {
-        this.title = title;
-        this.description = desc;
-        this.language = lang;
-        this.numberOfPages = pages;
+    public Burger(String burgerName, String restaurantName, int rating, String notes) {
+        this.burgerName = burgerName;
+        this.restaurantName = restaurantName;
+        this.rating = rating;
+        this.notes = notes;
     }
 
     public Long getId() {
@@ -56,36 +63,36 @@ public class Burger {
         this.id = id;
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getBurgerName() {
+        return this.burgerName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBurgerName(String burgerName) {
+        this.burgerName = burgerName;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getRestaurantName() {
+        return this.restaurantName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public String getLanguage() {
-        return this.language;
+    public Integer getRating() {
+        return this.rating;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
-    public Integer getNumberOfPages() {
-        return this.numberOfPages;
+    public String getNotes() {
+        return this.notes;
     }
 
-    public void setNumberOfPages(Integer numberOfPages) {
-        this.numberOfPages = numberOfPages;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public Date getCreatedAt() {
