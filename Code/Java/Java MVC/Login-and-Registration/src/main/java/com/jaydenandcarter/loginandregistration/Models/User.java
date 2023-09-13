@@ -1,3 +1,5 @@
+// Pair Programmed w/ Carter
+
 package com.jaydenandcarter.loginandregistration.Models;
 
 import java.util.Date;
