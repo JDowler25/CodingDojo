@@ -21,8 +21,8 @@ public class PropertyService {
             return propertyRepository.findAll();
         }
         // creates a Property
-        public Property createProperty(Property b) {
-            return propertyRepository.save(b);
+        public Property createProperty(Property property) {
+            return propertyRepository.save(property);
         }
         // retrieves a Property
         public Property findProperty(Long id) {
@@ -34,9 +34,9 @@ public class PropertyService {
             }
         }
         // updates a Property
-        public Property updateProperty(Property property) {
-            propertyRepository.save(property);
-            return property;
+        public Property updateProperty(Property prop) {
+            propertyRepository.save(prop);
+            return prop;
         }
         // deletes a Property
         public void deleteProperty(Long id) {
