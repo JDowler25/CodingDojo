@@ -12,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,35 +25,29 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    @NotNull
-    @Size(min = 5, max = 300)
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 5, max = 300, message = "Property must have a address")
     private String address;
-    @NotEmpty
-    @NotNull
-    @Size(min = 1, max = 99999)
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 1, max = 99999, message = "Property must have a square footage")
     private Integer sqft;
-    @NotEmpty
-    @NotNull
+    // @NotEmpty
+    // @NotNull
     private Boolean rented;
-    @NotEmpty
-    @NotNull
-    @Size(min = 1, max = 9999999)
-    private Integer mortage;
-    @NotEmpty
-    @NotNull
-    @Size(min = 1, max = 9999999)
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 1, max = 9999999, message = "Property must have a bedrooms")
     private Integer bedrooms;
-    @NotEmpty
-    @NotNull
-    @Size(min = 1, max = 9999999)
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 1, max = 9999999, message = "Property must have a baths")
     private Integer baths;
-    @NotEmpty
-    @NotNull
-    @Size(min = 1, max = 999999)
-    private Integer rentPrice;
-
-    
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 1, max = 9999999, message = "Property must have a mortage")
+    private Integer mortage;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -124,15 +120,7 @@ public class Property {
     public void setBaths(Integer baths) {
         this.baths = baths;
     }
-
-    public Integer getRentPrice() {
-        return this.rentPrice;
-    }
-
-    public void setRentPrice(Integer rentPrice) {
-        this.rentPrice = rentPrice;
-    }
-
+    
     public Date getCreatedAt() {
         return this.createdAt;
     }
@@ -156,5 +144,13 @@ public class Property {
     public void setUser(User user) {
         this.user = user;
     }
-
+    
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 }
