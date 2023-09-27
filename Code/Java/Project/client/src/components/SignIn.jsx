@@ -47,7 +47,7 @@ function SignIn() {
             Sign In
           </button>
           <p className="text-gray-600 mt-2">
-            Don't have an account? <a href="#">Sign Up here</a>
+            Don't have an account? <a href="/signup">Sign Up here</a>
           </p>
         </div>
       </div>

@@ -23,7 +23,7 @@ import com.jaydandowler.propfolio.services.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping("/api")
 public class ProjectApi {
 

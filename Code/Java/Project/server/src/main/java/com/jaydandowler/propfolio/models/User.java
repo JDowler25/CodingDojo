@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
@@ -27,15 +29,15 @@ public class User {
 
     @NotEmpty(message = "First name is required!")
     @Size(min = 3, max = 30, message = "First name must be between 3 and 30 characters")
-    private String firstName;
+    private String first_name;
 
     @NotEmpty(message = "Last name is required!")
     @Size(min = 3, max = 30, message = "Last name must be between 3 and 30 characters")
-    private String lastName;
+    private String last_name;
 
     @NotEmpty(message = "Username is required!")
     @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
-    private String userName;
+    private String user_name;
 
     @NotEmpty(message = "Email is required!")
     @Email(message = "Please enter a valid email!")
@@ -49,11 +51,14 @@ public class User {
     @NotEmpty(message = "Confirm Password is required!")
     @Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters")
     private String confirm;
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private Date created_at;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private Date updated_at;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Property> properties;
 
@@ -68,28 +73,28 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return this.firstName;
+    public String getFirst_name() {
+        return this.first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return this.lastName;
+    public String getLast_name() {
+        return this.last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUser_name() {
+        return this.user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getEmail() {
@@ -116,20 +121,20 @@ public class User {
         this.confirm = confirm;
     }
 
-    public Date getCreatedAt() {
-        return this.createdAt;
+    public Date getCreated_at() {
+        return this.created_at;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
-    public Date getUpdatedAt() {
-        return this.updatedAt;
+    public Date getUpdated_at() {
+        return this.updated_at;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
     }
 
     public List<Property> getProperties() {
@@ -138,6 +143,17 @@ public class User {
 
     public void setProperties(List<Property> properties) {
         this.properties = properties;
+    }
+
+    
+    @PrePersist
+    protected void onCreate() {
+        created_at = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated_at = new Date();
     }
 
 }
