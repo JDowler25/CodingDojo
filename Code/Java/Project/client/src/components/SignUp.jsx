@@ -22,25 +22,62 @@ const SignUp = () => {
   })
 
   const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState({});
 
+  const isValid = () => {
+    let valid = true;
+    const errors = {}; // Create an empty object to store errors
+  
+    if (user.first_name.length < 3) {
+      valid = false;
+      errors.first_name = "First name must be between 3 and 30 characters";
+    }
+    if (user.last_name.length < 3) {
+      valid = false;
+      errors.last_name = "Last name must be between 3 and 30 characters";
+    }
+    if (user.user_name.length < 3) {
+      valid = false;
+      errors.user_name = "Username must be between 3 and 30 characters";
+    }
+    if (user.email.length < 3) {
+      valid = false;
+      errors.email = "Email must be between 3 and 30 characters";
+    }
+    if (user.password.length < 3) {
+      valid = false;
+      errors.password = "Password must be between 3 and 30 characters";
+    }
+    if (user.confirm !== user.password) {
+      valid = false;
+      errors.confirm = "Passwords do not match";
+    }
+  
+    setFormErrors(errors); // Set the form errors object
+  
+    return valid;
+  };
+  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-    axios.post(`http://localhost:8080/api/register`, { user })
-      .then(data => {
+    if(isValid()){
+      try {
+        console.log(user)
+        const response = await axios.post(`http://localhost:8080/api/register`, user)
         console.log(response.data)
-        navigate('/')
-      })
-      .catch(error => {
-        console.log(error.response.data.error)
-      })
+        navigate('/dashboard')
+      } catch (errors) {
+        console.log(errors.response.data.errors)
+      }
+    } else {
+    }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser((prevState) => ({
-      ...prevState,
+    setUser(({
+      ...user,
       [name]: value
     }));
   };
@@ -58,8 +95,8 @@ const SignUp = () => {
         </div>
       </div>
       <div className="w-3/6 flex justify-center items-center">
-        <div className="bg-white max-w-xl p-4 rounded-xl text-center w-3/4 mx-4">
-          <img src={logo} alt="Company Logo" className="w-24 h-24 mx-auto" />
+        <div className="bg-white max-w-xl p-11 rounded-xl text-center w-3/4 mx-4">
+          <img src={logo} alt="Company Logo" className="w-32 h-32 mx-auto" />
           <hr className="my-4" />
           <h2 className="text-2xl font-bold">Welcome!</h2>
           <p className="text-gray-600">To continue, sign up for Propfolio</p>
@@ -77,6 +114,9 @@ const SignUp = () => {
                   onChange={handleInputChange}
                 />
               </div>
+              {formErrors.first_name && (
+                  <div className="text-red-500 mt-1">{formErrors.first_name}</div>
+                )}
               <div className="my-2">
                 <input
                   type="text"
@@ -86,7 +126,10 @@ const SignUp = () => {
                   className="border rounded p-2 w-full"
                   value={user.last_name}
                   onChange={handleInputChange}
-                />
+                  />
+                {formErrors.last_name && (
+                    <div className="text-red-500 mt-1">{formErrors.last_name}</div>
+                  )}
               </div>
               <div className="my-2">
                 <input
@@ -97,7 +140,10 @@ const SignUp = () => {
                   className="border rounded p-2 w-full"
                   value={user.user_name}
                   onChange={handleInputChange}
-                />
+                  />
+                  {formErrors.user_name && (
+                      <div className="text-red-500 mt-1">{formErrors.user_name}</div>
+                    )}
               </div>
               <div className="my-2">
                 <input
@@ -108,7 +154,10 @@ const SignUp = () => {
                   className="border rounded p-2 w-full"
                   value={user.email}
                   onChange={handleInputChange}
-                />
+                  />
+                {formErrors.email && (
+                    <div className="text-red-500 mt-1">{formErrors.email}</div>
+                  )}
               </div>
               <div className="my-2">
                 <input
@@ -120,6 +169,9 @@ const SignUp = () => {
                   value={user.password}
                   onChange={handleInputChange}
                 />
+                {formErrors.password && (
+                    <div className="text-red-500 mt-1">{formErrors.password}</div>
+                  )}
               </div>
               <div className="my-2">
                 <input
@@ -130,7 +182,10 @@ const SignUp = () => {
                   className="border rounded p-2 w-full"
                   value={user.confirm}
                   onChange={handleInputChange}
-                />
+                  />
+                  {formErrors.confirm && (
+                      <div className="text-red-500 mt-1">{formErrors.confirm}</div>
+                    )}
               </div>
             </div>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4">

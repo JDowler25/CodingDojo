@@ -1,6 +1,8 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { logo, highrise } from '../assets';
 import './SignIn.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
   const backgroundImageStyle = {
@@ -9,8 +11,56 @@ function SignIn() {
     backgroundPosition: 'center', // Optional: Center the background image
     position: 'relative', // Required for overlay
   };
-  
-  
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  })
+
+  const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState({});
+
+  const isValid = () => {
+    let valid = true;
+    const errors = {}; // Create an empty object to store errors
+
+    if (user.email.length < 3) {
+      valid = false;
+      errors.email = "Email must be between 3 and 30 characters";
+    }
+    if (user.password.length < 3) {
+      valid = false;
+      errors.password = "Password must be between 3 and 30 characters";
+    }
+
+    setFormErrors(errors); // Set the form errors object
+
+    return valid;
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isValid()) {
+      try {
+        console.log(user)
+        const response = await axios.post(`http://localhost:8080/api/login`, user)
+        console.log(response.data)
+        navigate('/dashboard')
+      } catch (errors) {
+        console.log(errors.response.data.errors)
+      }
+    } else {
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser(({
+      ...user,
+      [name]: value
+    }));
+  };
 
   return (
     <div className="flex h-screen w-screen columns-2" style={backgroundImageStyle}>
@@ -25,27 +75,47 @@ function SignIn() {
         </div>
       </div>
       <div className="w-3/6 flex justify-center items-center">
-        <div className="bg-white max-w-screen p-6 rounded-xl text-center">
+        <div className="bg-white max-w-screen p-12 rounded-xl text-center">
           <img src={logo} alt="Company Logo" className="w-32 h-32 mx-auto" />
           <hr className="my-4" />
           <h2 className="text-2xl font-bold">Welcome Back!</h2>
           <p className="text-gray-600">To continue, log in to Propfolio</p>
           <hr className="my-4" />
-          <div>
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="border rounded p-2 my-2 w-full"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="border rounded p-2 my-2 w-full"
-            />
-          </div>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4">
-            Sign In
-          </button>
+          <form onSubmit={handleSubmit} className='max-w-2xl mx-auto'>
+            <div className="w-full mx-auto">
+              <div className="my-2">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address*"
+                  className="border rounded p-2 w-full"
+                  value={user.email}
+                  onChange={handleInputChange}
+                />
+                {formErrors.email && (
+                  <div className="text-red-500 mt-1">{formErrors.email}</div>
+                )}
+              </div>
+              <div className="my-2">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password*"
+                  className="border rounded p-2 w-full"
+                  value={user.password}
+                  onChange={handleInputChange}
+                />
+                {formErrors.password && (
+                  <div className="text-red-500 mt-1">{formErrors.password}</div>
+                )}
+              </div>
+            </div>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4">
+              Sign In
+            </button>
+          </form>
           <p className="text-gray-600 mt-2">
             Don't have an account? <a href="/signup">Sign Up here</a>
           </p>
