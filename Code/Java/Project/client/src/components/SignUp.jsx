@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { logo, highrise } from '../assets';
+import { loginlogo, highrise } from '../assets';
 import './SignUp.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
 
@@ -96,11 +96,11 @@ const SignUp = () => {
       </div>
       <div className="w-3/6 flex justify-center items-center">
         <div className="bg-white max-w-xl p-11 rounded-xl text-center w-3/4 mx-4">
-          <img src={logo} alt="Company Logo" className="w-32 h-32 mx-auto" />
-          <hr className="my-4" />
+          <img src={loginlogo} alt="Company Logo" className="w-36 h-36 mx-auto" />
+          <hr className="my-2" />
           <h2 className="text-2xl font-bold">Welcome!</h2>
           <p className="text-gray-600">To continue, sign up for Propfolio</p>
-          <hr className="my-4" />
+          <hr className="my-2" />
           <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
             <div className="w-full mx-auto">
               <div className="my-2">

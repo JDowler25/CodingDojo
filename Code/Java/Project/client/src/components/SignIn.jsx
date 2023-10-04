@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { logo, highrise } from '../assets';
+import { loginlogo, highrise } from '../assets';
 import './SignIn.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
 
@@ -76,7 +76,7 @@ function SignIn() {
       </div>
       <div className="w-3/6 flex justify-center items-center">
         <div className="bg-white max-w-screen p-12 rounded-xl text-center">
-          <img src={logo} alt="Company Logo" className="w-32 h-32 mx-auto" />
+          <img src={loginlogo} alt="Company Logo" className="w-36 h-36 mx-auto" />
           <hr className="my-4" />
           <h2 className="text-2xl font-bold">Welcome Back!</h2>
           <p className="text-gray-600">To continue, log in to Propfolio</p>
