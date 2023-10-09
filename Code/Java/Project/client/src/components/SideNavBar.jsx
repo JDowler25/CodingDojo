@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // import useNavigate
 import { logo } from '../assets'; // Make sure to replace with the actual path
 
 const SideNavBar = () => {
-  const [activeTab, setActiveTab] = useState('Overview');
+  const [activeTab, setActiveTab] = useState('');
+  const navigate = useNavigate(); // initialize useNavigate
+
+
+  // Add this useEffect hook
+  useEffect(() => {
+    if (activeTab === 'Properties') {
+      console.log("Navigating to /properties");
+      navigate('/properties'); // Navigate when activeTab changes to 'Properties'
+      setActiveTab('Properties')
+    } 
+    if (activeTab === 'Overview') {
+      console.log("Navigating to /dashboard");
+      navigate('/dashboard');
+      setActiveTab('Overview')
+    }
+    // Add more navigation logic for other tabs if needed
+  }, [activeTab, navigate]); // Depend on activeTab and navigate
 
   return (
     <div className="min-w-fit flex-none overflow-y-auto h-screen bg-sidebar-bg">
@@ -29,10 +47,9 @@ const SideNavBar = () => {
             {['Overview', 'Properties', 'Settings'].map((item) => (
               <li
                 key={item}
-                className={`mb-2 py-2 px-4 cursor-pointer rounded-3xl text-center transition-colors duration-200 w-3/4 mx-auto ${
-                  activeTab === item ? 'bg-white text-sidebar-bg' : 'text-text-color hover:bg-white hover:text-sidebar-bg'
-                }`}
-                onClick={() => setActiveTab(item)}
+                className={`mb-2 py-2 px-4 cursor-pointer rounded-3xl text-center transition-colors duration-200 w-3/4 mx-auto ${activeTab === item ? 'bg-white text-sidebar-bg' : 'text-text-color hover:bg-white hover:text-sidebar-bg'
+                  }`}
+                onClick={() => setActiveTab(item)} // update the activeTab state here
               >
                 <span>{item}</span>
               </li>

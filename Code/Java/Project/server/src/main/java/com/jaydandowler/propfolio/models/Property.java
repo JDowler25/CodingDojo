@@ -15,9 +15,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+// import jakarta.validation.constraints.NotEmpty;
+// import jakarta.validation.constraints.NotNull;
+// import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="properties")
@@ -47,7 +47,12 @@ public class Property {
     // @NotEmpty
     // @NotNull
     // @Size(min = 1, max = 9999999, message = "Property must have a mortage")
-    private Integer mortage;
+    private Integer expenses;
+    // @NotEmpty
+    // @NotNull
+    // @Size(min = 1, max = 9999999, message = "Property must have a mortage")
+    private Integer rentIncome;
+    private String imageUrl;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -97,14 +102,6 @@ public class Property {
         this.rented = rented;
     }
 
-    public Integer getMortage() {
-        return this.mortage;
-    }
-
-    public void setMortage(Integer mortage) {
-        this.mortage = mortage;
-    }
-
     public Integer getBedrooms() {
         return this.bedrooms;
     }
@@ -120,7 +117,23 @@ public class Property {
     public void setBaths(Integer baths) {
         this.baths = baths;
     }
-    
+
+    public Integer getExpenses() {
+        return this.expenses;
+    }
+
+    public void setExpenses(Integer expenses) {
+        this.expenses = expenses;
+    }
+
+    public Integer getRentIncome() {
+        return this.rentIncome;
+    }
+
+    public void setRentIncome(Integer rentIncome) {
+        this.rentIncome = rentIncome;
+    }
+
     public Date getCreatedAt() {
         return this.createdAt;
     }
@@ -144,6 +157,14 @@ public class Property {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
     
     @PrePersist
     protected void onCreate(){
@@ -153,4 +174,5 @@ public class Property {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+
 }

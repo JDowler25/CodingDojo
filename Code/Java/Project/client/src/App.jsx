@@ -1,8 +1,8 @@
 import React from 'react';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import Dashboard from './components/Dashboard';
-import SideNavBar from './components/sideNavBar';
+import Dashboard from './components/Dashboard'
+import Properties from './components/Properties';
 import { Route, Routes } from 'react-router-dom';
 
 function App () {
@@ -12,7 +12,7 @@ function App () {
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='nav' element={<SideNavBar/>}/>
+        <Route path='/properties' element={<Properties/>}/>
       </Routes>
     </div>
   )
