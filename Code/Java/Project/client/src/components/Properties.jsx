@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import SideNavBar from './SideNavBar';
 import Header from './Header';
 import PropCard from './PropCard';
+import axios from 'axios';
 
 const Properties = () => {
-    // Example data; replace this with your actual data
-    const properties = [
-        {
-            image: 'path/to/your/image.jpg', // Replace with actual image path
-            sqft: 1200,
-            bed: 3,
-            bath: 2,
-            expenses: 500,
-            rented: true,
-            rentIncome: 1500, // New field
-        },
-        // ... more property objects
-    ];
+    const [properties, setProperties] = useState([]); // state to hold properties data
+
+    useEffect(() => {
+        // function to fetch properties data
+        const fetchProperties = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/properties'); // adjust the endpoint as needed
+                setProperties(response.data); // set the fetched data to state
+            } catch (error) {
+                console.error('Error fetching properties data: ', error);
+            }
+        };
+
+        fetchProperties(); // call the function to fetch data
+    }, []); // empty dependency array means this useEffect runs once when component mounts
+
     return (
         <div className="flex h-screen w-screen bg-gray-100">
             {/* Sidebar */}
@@ -32,8 +36,8 @@ const Properties = () => {
                 <main className="flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto">
                     <h1 className="text-2xl font-bold mb-4">Properties</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {properties.map((property, index) => (
-                            <PropCard key={index} property={property} />
+                        {properties.map(property => (
+                            <PropCard key={property.id} property={property} /> // render PropCard for each property
                         ))}
                     </div>
                 </main>

@@ -1,6 +1,5 @@
 package com.jaydandowler.propfolio.controllers;
 
-import org.eclipse.tags.shaded.org.apache.regexp.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -34,14 +33,14 @@ public class ProjectApi {
     private UserService userService;
 
     @GetMapping("/users")
-    public ResponseEntity<Object> getAllUsers(){
+    public ResponseEntity<Object> getAllUsers() {
         return ResponseEntity.ok().body(userService.allUsers());
     }
 
     @PostMapping("/register")
     public ResponseEntity<Object> registerUser(@Valid @RequestBody User user, BindingResult result) {
         System.out.println(user);
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors());
         }
@@ -50,9 +49,9 @@ public class ProjectApi {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@Valid @RequestBody LoginUser newLogin, BindingResult result){
+    public ResponseEntity<Object> login(@Valid @RequestBody LoginUser newLogin, BindingResult result) {
         System.out.println(newLogin);
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors());
         }
@@ -67,7 +66,10 @@ public class ProjectApi {
 
     @PostMapping("/properties/create")
     public ResponseEntity<Object> createProperty(@Valid @RequestBody Property property, BindingResult result) {
-        System.out.println(property);
+        // Logging the received Property object and isRented value
+        System.out.println("Received Property object: " + property);
+        System.out.println("isRented value: " + property.isIsRented());
+
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors());

@@ -13,7 +13,7 @@ const SideNavBar = () => {
       console.log("Navigating to /properties");
       navigate('/properties'); // Navigate when activeTab changes to 'Properties'
       setActiveTab('Properties')
-    } 
+    }
     if (activeTab === 'Overview') {
       console.log("Navigating to /dashboard");
       navigate('/dashboard');
@@ -33,10 +33,12 @@ const SideNavBar = () => {
 
         {/* Create New Button */}
         <button
+          onClick={() => navigate('/property/new')}  // Added onClick handler here
           className="py-2 px-4 mb-4 w-3/4 rounded-3xl shadow-lg bg-button-green text-white text-sm"
         >
           + Create New
         </button>
+
 
         {/* Separator Line */}
         <hr className="border-t border-hr-color w-full mb-4" />

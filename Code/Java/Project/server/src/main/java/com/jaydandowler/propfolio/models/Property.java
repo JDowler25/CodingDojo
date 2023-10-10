@@ -15,17 +15,17 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-// import jakarta.validation.constraints.NotEmpty;
 // import jakarta.validation.constraints.NotNull;
 // import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="properties")
+@Table(name = "properties")
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // @NotEmpty
+    @NotEmpty
     // @NotNull
     // @Size(min = 5, max = 300, message = "Property must have a address")
     private String address;
@@ -35,7 +35,7 @@ public class Property {
     private Integer sqft;
     // @NotEmpty
     // @NotNull
-    private Boolean rented;
+    private Boolean isRented;
     // @NotEmpty
     // @NotNull
     // @Size(min = 1, max = 9999999, message = "Property must have a bedrooms")
@@ -54,13 +54,13 @@ public class Property {
     private Integer rentIncome;
     private String imageUrl;
     // This will not allow the createdAt column to be updated after creation
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Property() {
@@ -90,16 +90,16 @@ public class Property {
         this.sqft = sqft;
     }
 
-    public Boolean isRented() {
-        return this.rented;
+    public Boolean isIsRented() {
+        return this.isRented;
     }
 
-    public Boolean getRented() {
-        return this.rented;
+    public Boolean getIsRented() {
+        return this.isRented;
     }
 
-    public void setRented(Boolean rented) {
-        this.rented = rented;
+    public void setIsRented(Boolean isRented) {
+        this.isRented = isRented;
     }
 
     public Integer getBedrooms() {
@@ -134,6 +134,14 @@ public class Property {
         this.rentIncome = rentIncome;
     }
 
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Date getCreatedAt() {
         return this.createdAt;
     }
@@ -158,21 +166,32 @@ public class Property {
         this.user = user;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.createdAt = new Date();
     }
+
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updatedAt = new Date();
+    }
+
+    @Override
+    public String toString() {
+        return "Property{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", sqft=" + sqft +
+                ", rented=" + isRented +
+                ", bedrooms=" + bedrooms +
+                ", baths=" + baths +
+                ", expenses=" + expenses +
+                ", rentIncome=" + rentIncome +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
 
 }

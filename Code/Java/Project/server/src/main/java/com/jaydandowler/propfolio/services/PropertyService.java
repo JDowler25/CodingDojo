@@ -36,7 +36,7 @@ public class PropertyService {
     }
 
     private void validateRentIncome(Property property) {
-        if (property.isRented() != null && !property.isRented()) {
+        if (property.isIsRented() != null && !property.isIsRented()) {
             property.setRentIncome(null); // Set rentIncome to null if rented is false
         }
     }
