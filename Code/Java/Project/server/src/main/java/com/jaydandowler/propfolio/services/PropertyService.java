@@ -33,18 +33,25 @@ public class PropertyService {
         Optional<Property> optionalProperty = propertyRepository.findById(id);
         if (optionalProperty.isPresent()) {
             Property existingProperty = optionalProperty.get();
+            
             // Update fields of existingProperty with values from updatedProperty
-            // Example: existingProperty.setAddress(updatedProperty.getAddress());
-            // ... (repeat for other fields)
+            existingProperty.setAddress(updatedProperty.getAddress());
+            existingProperty.setSqft(updatedProperty.getSqft());
+            existingProperty.setBedrooms(updatedProperty.getBedrooms());
+            existingProperty.setBaths(updatedProperty.getBaths());
+            existingProperty.setExpenses(updatedProperty.getExpenses());
+            existingProperty.setIsRented(updatedProperty.getIsRented());
+            existingProperty.setRentIncome(updatedProperty.getRentIncome());
+            existingProperty.setImageUrl(updatedProperty.getImageUrl());
+            
             validateRentIncome(existingProperty);
             propertyRepository.save(existingProperty);
             return existingProperty;
         } else {
-            // Handle error: Property with given ID not found
-            // You might want to throw an exception or return null, depending on your error handling strategy
             return null;
         }
     }
+    
     
 
     private void validateRentIncome(Property property) {

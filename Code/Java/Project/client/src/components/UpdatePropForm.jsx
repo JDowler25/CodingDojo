@@ -13,7 +13,7 @@ const UpdatePropForm = () => {
         baths: '',
         expenses: '',
         isRented: false,
-        rentIncome: '',
+        rentIncome: 0,
         imageUrl: ''
     });
 
@@ -78,156 +78,187 @@ const UpdatePropForm = () => {
     // Updated handleSubmit function
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isValid()) {
-            try {
-                console.log("Sending formData:", formData);
-                const response = await axios.put(`http://localhost:8080/api/properties/update/${id}`, formData);
-                console.log(response.data);
-                navigate('/properties'); // Adjust this navigation if necessary
-            } catch (errors) {
-                console.log(errors.response.data.errors); // Adjust based on your API error response structure
+        try {
+            console.log(formData.address)
+            // const dataObj = new FormData();
+            // console.log("Look we got here")
+            // dataObj.append('address', formData.address)
+            // dataObj.append('bedrooms', formData.bedrooms)
+            // dataObj.append('sqft', formData.sqft)
+            // dataObj.append('baths', formData.baths)
+            // dataObj.append('isRented', formData.isRented)
+            // dataObj.append('expenses', formData.expenses)
+            // dataObj.append('rentIncome', formData.rentIncome)
+            // dataObj.append('imageUrl', formData.imageUrl)
+            // console.log("Sending formData:", dataObj)
+            const response = await axios.put(`http://localhost:8080/api/properties/update/${id}`, formData);
+            console.log(response.data);
+            navigate('/properties');
+        }
+        catch (errors) {
+            console.log("here**************************")
+            if (errors.response && errors.response.data && errors.response.data.errors) {
+                console.log(errors.response.data.errors);
+            } else {
+                console.error('An unexpected error occurred:', errors.message || errors);
             }
         }
     };
 
-    const handleDelete = async () => {
-        try {
-            // Making a DELETE request to the server
-            await axios.delete(`http://localhost:8080/api/properties/delete/${property.id}`);
-            // Navigate to another page after successful deletion
-            navigate('/properties'); // Adjust this to where you want to redirect the user
-        } catch (errors) {
-            console.log(errors.response.data.errors);
-        }
-    };
+        // if (isValid()) {
+        //     try {
+        //         console.log("Sending formData:", formData);
+        //         const response = await axios.put(`http://localhost:8080/api/properties/update/${id}`, formData);
+        //         console.log(response.data);
+    //     navigate('/properties');
+    // } catch (errors) {
+    //     console.log(errors.response.data.errors);
+        // }
+        // }
 
-    return (
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
-                    Property Address
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    placeholder="Property Address"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
-                    Property Sqft
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="number"
-                    name="sqft"
-                    value={formData.sqft}
-                    onChange={handleChange}
-                    placeholder="Property Sqft"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
-                    Property Bedrooms
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="number"
-                    name="bedrooms"
-                    value={formData.bedrooms}
-                    onChange={handleChange}
-                    placeholder="Property Bedrooms"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
-                    Property Baths
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="number"
-                    name="baths"
-                    value={formData.baths}
-                    onChange={handleChange}
-                    placeholder="Property Baths"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
-                    Property Expenses
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="number"
-                    name="expenses"
-                    value={formData.expenses}
-                    onChange={handleChange}
-                    placeholder="Property expenses"
-                />
-            </div>
-            <div className="mb-4">
-                <input
-                    type="checkbox"
-                    checked={formData.isRented}
-                    onChange={handleCheckboxChange}
-                    className="mr-2 leading-tight"
-                />
-                <label className="text-sm">
-                    Rented
-                </label>
-            </div>
-            {formData.isRented && (
+        const handleDelete = async () => {
+            try {
+                // Making a DELETE request to the server
+                await axios.delete(`http://localhost:8080/api/properties/delete/${id}`);
+                // Navigate to another page after successful deletion
+                navigate('/properties');
+            } catch (errors) {
+                if (errors.response && errors.response.data && errors.response.data.errors) {
+                    console.log(errors.response.data.errors);
+                } else {
+                    console.error('An unexpected error occurred:', errors.message || errors);
+                }
+            }
+        };
+
+
+        return (
+            <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rentIncome">
-                        Rent Income
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+                        Property Address
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        placeholder="Property Address"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
+                        Property Sqft
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="number"
-                        name="rentIncome"
-                        value={formData.rentIncome}
+                        name="sqft"
+                        value={formData.sqft}
                         onChange={handleChange}
-                        placeholder="Rent Income"
+                        placeholder="Property Sqft"
                     />
                 </div>
-            )}
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
-                    Property Image
-                </label>
-                <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    type="text"
-                    name="imageUrl"
-                    value={formData.imageUrl}
-                    onChange={handleChange}
-                    placeholder="Property Image Url"
-                />
-                {Object.values(formErrors).map((error, index) => (
-                    <p key={index} className="text-red-500">{error}</p>
-                ))}
-            </div>
-            <div className="flex items-center justify-between">
-                <div className='mx-4'>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        Submit
-                    </button>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
+                        Property Bedrooms
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        name="bedrooms"
+                        value={formData.bedrooms}
+                        onChange={handleChange}
+                        placeholder="Property Bedrooms"
+                    />
                 </div>
-                <div className='mx-4'>
-                    <button
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="button"
-                        onClick={handleDelete} // Add this line to handle delete button click
-                    >
-                        Delete Property
-                    </button>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
+                        Property Baths
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        name="baths"
+                        value={formData.baths}
+                        onChange={handleChange}
+                        placeholder="Property Baths"
+                    />
                 </div>
-            </div>
-        </form>
-    );
-}
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
+                        Property Expenses
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        name="expenses"
+                        value={formData.expenses}
+                        onChange={handleChange}
+                        placeholder="Property expenses"
+                    />
+                </div>
+                <div className="mb-4">
+                    <input
+                        type="checkbox"
+                        checked={formData.isRented}
+                        onChange={handleCheckboxChange}
+                        className="mr-2 leading-tight"
+                    />
+                    <label className="text-sm">
+                        Rented
+                    </label>
+                </div>
+                {formData.isRented && (
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rentIncome">
+                            Rent Income
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="number"
+                            name="rentIncome"
+                            value={formData.rentIncome}
+                            onChange={handleChange}
+                            placeholder="Rent Income"
+                        />
+                    </div>
+                )}
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+                        Property Image
+                    </label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        name="imageUrl"
+                        value={formData.imageUrl}
+                        onChange={handleChange}
+                        placeholder="Property Image Url"
+                    />
+                    {Object.values(formErrors).map((error, index) => (
+                        <p key={index} className="text-red-500">{error}</p>
+                    ))}
+                </div>
+                <div className="flex items-center justify-between">
+                    <div className='mx-4'>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                    <div className='mx-4'>
+                        <button
+                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                            onClick={handleDelete}
+                        >
+                            Delete Property
+                        </button>
+                    </div>
+                </div>
+            </form>
+        );
+    }
 
-export default UpdatePropForm;
+    export default UpdatePropForm;

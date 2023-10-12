@@ -88,7 +88,9 @@ public class ProjectApi {
     @PutMapping("/properties/update/{id}")
     public ResponseEntity<Object> updateProperty(@PathVariable("id") Long id, @Valid @RequestBody Property property,
             BindingResult result) {
+        System.out.println("****************************************************************");
         System.out.println("Received Property object: " + property);
+        System.out.println("****************************************************************");
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors());

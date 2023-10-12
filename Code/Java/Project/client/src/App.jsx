@@ -1,10 +1,10 @@
 import React from 'react';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import Dashboard from './components/Dashboard'
-import Properties from './components/Properties';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+import Properties from './pages/Properties';
 import CreateProp from './components/CreateProp';
-import UpdateProp from './components/UpdateProp';
+import UpdateProp from './pages/UpdateProp';
 import { UserProvider } from './components/UserContext';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
