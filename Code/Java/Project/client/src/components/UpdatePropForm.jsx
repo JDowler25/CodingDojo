@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const UpdatePropForm = ({ property }) => {
+const UpdatePropForm = () => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({
-        address: property.address,
-        sqft: property.sqft,
-        bedrooms: property.bedrooms,
-        baths: property.baths,
-        expenses: property.expenses,
-        isRented: property.isRented,
-        rentIncome: property.rentIncome,
-        imageUrl: property.imageUrl
+        address: '',
+        sqft: '',
+        bedrooms: '',
+        baths: '',
+        expenses: '',
+        isRented: false,
+        rentIncome: '',
+        imageUrl: ''
     });
 
+    // Fetch initial data for the property
     useEffect(() => {
-        // Update formData state when property prop changes
-        setFormData({
-            address: property.address,
-            sqft: property.sqft,
-            bedrooms: property.bedrooms,
-            baths: property.baths,
-            expenses: property.expenses,
-            isRented: property.isRented,
-            rentIncome: property.rentIncome,
-            imageUrl: property.imageUrl
-        });
-    }, [property]);
+        axios.get(`http://localhost:8080/api/properties/${id}`)
+            .then(response => setFormData(response.data)) // Set the initial data
+            .catch(err => console.log(err));
+    }, [id]); // Dependency array to re-run effect when `id` changes
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -80,6 +74,33 @@ const UpdatePropForm = ({ property }) => {
 
         return valid;
     };
+
+    // Updated handleSubmit function
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isValid()) {
+            try {
+                console.log("Sending formData:", formData);
+                const response = await axios.put(`http://localhost:8080/api/properties/update/${id}`, formData);
+                console.log(response.data);
+                navigate('/properties'); // Adjust this navigation if necessary
+            } catch (errors) {
+                console.log(errors.response.data.errors); // Adjust based on your API error response structure
+            }
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            // Making a DELETE request to the server
+            await axios.delete(`http://localhost:8080/api/properties/delete/${property.id}`);
+            // Navigate to another page after successful deletion
+            navigate('/properties'); // Adjust this to where you want to redirect the user
+        } catch (errors) {
+            console.log(errors.response.data.errors);
+        }
+    };
+
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
@@ -95,7 +116,6 @@ const UpdatePropForm = ({ property }) => {
                     placeholder="Property Address"
                 />
             </div>
-            {/* ... Repeat similar div structure for other inputs ... */}
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sqft">
                     Property Sqft
@@ -190,12 +210,24 @@ const UpdatePropForm = ({ property }) => {
                     <p key={index} className="text-red-500">{error}</p>
                 ))}
             </div>
-            {/* ... (other input fields) ... */}
             <div className="flex items-center justify-between">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Submit
-                </button>
+                <div className='mx-4'>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Submit
+                    </button>
+                </div>
+                <div className='mx-4'>
+                    <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button"
+                        onClick={handleDelete} // Add this line to handle delete button click
+                    >
+                        Delete Property
+                    </button>
+                </div>
             </div>
         </form>
     );
 }
+
+export default UpdatePropForm;

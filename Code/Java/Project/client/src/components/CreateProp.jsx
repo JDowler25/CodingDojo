@@ -4,6 +4,7 @@ import Header from './Header';
 import PropForm from './PropForm';
 
 const CreateProp = () => {
+    
     return (
         <div className="flex h-screen w-screen bg-gray-100">
             {/* Sidebar */}

@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { helpIcon, accountIcon, searchIcon, settingsIcon, logoutIcon } from '../assets'; // Replace with actual import paths
+import { UserContext } from './UserContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const Header = ({ userName }) => {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // access setUser from context
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleLogout = () => {
+    setUser(null); // clear the user data
+    navigate('/signin'); // redirect to sign-in page
+  };
 
   return (
     <div className="w-full h-auto flex flex-col justify-center px-4 bg-white shadow-md">
@@ -44,7 +54,10 @@ const Header = ({ userName }) => {
                   <img src={settingsIcon} alt="Settings" className="w-4 h-4 mr-2" />
                   Settings
                 </div>
-                <div className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100">
+                <div
+                  className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
+                  onClick={handleLogout} // handle logout on click
+                >
                   <img src={logoutIcon} alt="Logout" className="w-4 h-4 mr-2" />
                   Logout
                 </div>

@@ -1,6 +1,7 @@
 package com.jaydandowler.propfolio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -87,11 +88,27 @@ public class ProjectApi {
     @PutMapping("/properties/update/{id}")
     public ResponseEntity<Object> updateProperty(@PathVariable("id") Long id, @Valid @RequestBody Property property,
             BindingResult result) {
+        System.out.println("Received Property object: " + property);
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors());
         }
-        Property savedProperty = propertyService.updateProperty(property);
+        Property savedProperty = propertyService.updateProperty(id, property);
         return ResponseEntity.ok().body(savedProperty);
     }
+
+    @GetMapping("/properties/{id}")
+    public ResponseEntity<Object> getProperty(@PathVariable String id) {
+        System.out.println("Received ID: " + id); // Log the received ID
+
+        try {
+            Long validId = Long.parseLong(id); // Attempt to parse the ID as Long
+            return ResponseEntity.ok().body(propertyService.findProperty(validId)); // Proceed if successful
+        } catch (NumberFormatException e) {
+            // Handle the error if ID is not a valid number
+            System.err.println("Invalid ID received: " + id);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID"); // Return error response
+        }
+    }
+
 }

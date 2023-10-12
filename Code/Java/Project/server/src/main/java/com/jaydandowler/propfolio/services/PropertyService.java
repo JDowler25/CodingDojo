@@ -29,11 +29,23 @@ public class PropertyService {
     }
     
     // updates a Property
-    public Property updateProperty(Property prop) {
-        validateRentIncome(prop);
-        propertyRepository.save(prop);
-        return prop;
+    public Property updateProperty(Long id, Property updatedProperty) {
+        Optional<Property> optionalProperty = propertyRepository.findById(id);
+        if (optionalProperty.isPresent()) {
+            Property existingProperty = optionalProperty.get();
+            // Update fields of existingProperty with values from updatedProperty
+            // Example: existingProperty.setAddress(updatedProperty.getAddress());
+            // ... (repeat for other fields)
+            validateRentIncome(existingProperty);
+            propertyRepository.save(existingProperty);
+            return existingProperty;
+        } else {
+            // Handle error: Property with given ID not found
+            // You might want to throw an exception or return null, depending on your error handling strategy
+            return null;
+        }
     }
+    
 
     private void validateRentIncome(Property property) {
         if (property.isIsRented() != null && !property.isIsRented()) {

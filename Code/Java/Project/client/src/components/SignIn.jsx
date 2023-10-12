@@ -1,28 +1,30 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { loginlogo, highrise } from '../assets';
 import './SignIn.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
 function SignIn() {
   const backgroundImageStyle = {
-    backgroundImage: `linear-gradient(rgba(60, 74, 131, 0.7), rgba(60, 74, 131, 0.7)), url(${highrise})`, // Set the background image and apply the specified color using linear-gradient
-    backgroundSize: 'cover', // Optional: Cover the entire element
-    backgroundPosition: 'center', // Optional: Center the background image
-    position: 'relative', // Required for overlay
+    backgroundImage: `linear-gradient(rgba(60, 74, 131, 0.7), rgba(60, 74, 131, 0.7)), url(${highrise})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'relative',
   };
 
-  const [user, setUser] = useState({
+  const [user, setUserState] = useState({
     email: "",
     password: "",
   })
 
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Using the User context here
   const [formErrors, setFormErrors] = useState({});
 
   const isValid = () => {
     let valid = true;
-    const errors = {}; // Create an empty object to store errors
+    const errors = {};
 
     if (user.email.length < 3) {
       valid = false;
@@ -33,33 +35,33 @@ function SignIn() {
       errors.password = "Password must be between 3 and 30 characters";
     }
 
-    setFormErrors(errors); // Set the form errors object
-
+    setFormErrors(errors);
     return valid;
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isValid()) {
       try {
         console.log(user)
-        const response = await axios.post(`http://localhost:8080/api/login`, user)
-        console.log(response.data)
-        navigate('/dashboard')
+        const response = await axios.post(`http://localhost:8080/api/login`, user);
+        console.log(response.data);
+        setUser(response.data.user); // Set the user context here. Adjust this line based on the actual structure of your response.
+        navigate('/dashboard');
       } catch (errors) {
-        console.log(errors.response.data.errors)
+        console.log(errors.response.data.errors);
       }
     } else {
+      // handle invalid form
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser(({
+    setUserState({
       ...user,
       [name]: value
-    }));
+    });
   };
 
   return (

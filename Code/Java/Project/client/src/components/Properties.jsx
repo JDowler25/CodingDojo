@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import SideNavBar from './SideNavBar';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import PropCard from './PropCard';
-import axios from 'axios';
+import SideNavBar from './SideNavBar';
+import { Link } from 'react-router-dom';
 
 const Properties = () => {
     const [properties, setProperties] = useState([]); // state to hold properties data
@@ -36,9 +37,11 @@ const Properties = () => {
                 <main className="flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto">
                     <h1 className="text-2xl font-bold mb-4">Properties</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {properties.map(property => (
-                            <PropCard key={property.id} property={property} /> // render PropCard for each property
-                        ))}
+                    {properties.map(property => (
+              <Link key={property.id} to={`/properties/update/${property.id}`}>
+                <PropCard property={property} /> {/* render PropCard for each property */}
+              </Link>
+            ))}
                     </div>
                 </main>
             </div>

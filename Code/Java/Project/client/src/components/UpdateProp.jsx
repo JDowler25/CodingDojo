@@ -3,27 +3,39 @@ import { useParams } from 'react-router-dom'; // Import useParams for getting ID
 import SideNavBar from './SideNavBar';
 import Header from './Header';
 import axios from 'axios';
+import UpdatePropForm from './UpdatePropForm';
+
 
 const UpdateProp = () => {
     const { id } = useParams(); // Get ID from URL
+
+    console.log("ID from params:", id); // Log the ID value
+
     const [property, setProperty] = useState(null); // State to hold property data
     const [loading, setLoading] = useState(true); // State to handle loading
     const [error, setError] = useState(null); // State to handle error
 
     useEffect(() => {
-        // Fetch property data from API when component is mounted
-        const fetchProperty = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/properties/${id}`); // Adjust API endpoint
-                setProperty(response.data); // Set fetched data to state
-                setLoading(false); // Set loading to false after data is fetched
-            } catch (err) {
-                setError('Error fetching property data'); // Set error message
-                setLoading(false); // Set loading to false if there is an error
-            }
-        };
+        // Check if the ID is null or undefined before making the request
+        if (id == null || isNaN(Number(id))) {
+            console.error("Invalid ID:", id); // Log error if ID is not a valid number
+            setError('Invalid ID received');
+            setLoading(false);
+        } else {
+            // Fetch property data from API when component is mounted
+            const fetchProperty = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:8080/api/properties/${id}`); // Adjust API endpoint
+                    setProperty(response.data); // Set fetched data to state
+                    setLoading(false); // Set loading to false after data is fetched
+                } catch (err) {
+                    setError('Error fetching property data'); // Set error message
+                    setLoading(false); // Set loading to false if there is an error
+                }
+            };
 
-        fetchProperty(); // Call the fetch function
+            fetchProperty(); // Call the fetch function
+        }
     }, [id]); // Dependency array with id to re-run effect if id changes
 
     return (
@@ -44,8 +56,7 @@ const UpdateProp = () => {
                     {error && <p className="text-red-500">{error}</p>} {/* Error message */}
                     {!loading && !error && property && (
                         // Pass fetched property data to UpdatePropForm (to be created)
-                        // <UpdatePropForm property={property} />
-                        <p>Property data loaded. Implement UpdatePropForm here.</p>
+                        <UpdatePropForm property={property} />
                     )}
                 </main>
             </div>

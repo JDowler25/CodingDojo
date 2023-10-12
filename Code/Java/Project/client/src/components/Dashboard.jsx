@@ -3,6 +3,7 @@ import SideNavBar from './SideNavBar';
 import Header from './Header';
 import MainContent from './MainContent';
 
+
 const Dashboard = () => {
   return (
     <div className="flex h-screen w-screen bg-gray-100">
