@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams for getting ID from URL
-import SideNavBar from './SideNavBar';
-import Header from './Header';
+import SideNavBar from '../components/SideNavBar';
+import Header from '../components/Header';
 import axios from 'axios';
-import UpdatePropForm from './UpdatePropForm';
+import UpdatePropForm from '../components/UpdatePropForm';
 
 
 const UpdateProp = () => {

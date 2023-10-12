@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Header from './Header';
-import PropCard from './PropCard';
-import SideNavBar from './SideNavBar';
+import Header from '../components/Header';
+import PropCard from '../components/PropCard';
+import SideNavBar from '../components/SideNavBar';
 import { Link } from 'react-router-dom';
 
 const Properties = () => {

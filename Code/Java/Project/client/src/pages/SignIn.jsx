@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { loginlogo, highrise } from '../assets';
 import './SignIn.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from './UserContext';
+import { UserContext } from '../components/UserContext';
 
 function SignIn() {
   const backgroundImageStyle = {

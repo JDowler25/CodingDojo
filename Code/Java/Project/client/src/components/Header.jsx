@@ -6,12 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = ({ userName }) => {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext); // access setUser from context
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLogout = () => {
-    setUser(null); // clear the user data
     navigate('/signin'); // redirect to sign-in page
   };
 
