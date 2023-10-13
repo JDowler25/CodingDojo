@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -67,17 +68,26 @@ public class ProjectApi {
 
     @PostMapping("/properties/create")
     public ResponseEntity<Object> createProperty(@Valid @RequestBody Property property, BindingResult result) {
-        // Logging the received Property object and isRented value
         System.out.println("Received Property object: " + property);
         System.out.println("isRented value: " + property.isIsRented());
-
+    
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
-            return ResponseEntity.status(400).body(result.getAllErrors());
+            return ResponseEntity.status(400).body(result.getAllErrors().toString());
         }
-        Property savedProperty = propertyService.createProperty(property);
+        
+        if (property.getUser() == null || property.getUser().getId() == null) {
+            return ResponseEntity.status(400).body("User id must be provided");
+        }
+    
+        Long userId = property.getUser().getId();
+        Property savedProperty = propertyService.createProperty(property, userId);
+        
         return ResponseEntity.ok().body(savedProperty);
     }
+    
+    
+
 
     @DeleteMapping("/properties/delete/{id}")
     public ResponseEntity<Object> deleteProperty(@PathVariable("id") Long id) {

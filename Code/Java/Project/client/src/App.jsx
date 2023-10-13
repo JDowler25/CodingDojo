@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Properties from './pages/Properties';
 import CreateProp from './components/CreateProp';
 import UpdateProp from './pages/UpdateProp';
-import { UserProvider } from './components/UserContext';
+import { UserProvider } from './context/UserContext';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {

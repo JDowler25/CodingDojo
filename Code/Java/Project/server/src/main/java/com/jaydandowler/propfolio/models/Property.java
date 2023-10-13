@@ -1,70 +1,63 @@
 package com.jaydandowler.propfolio.models;
 
 import java.util.Date;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
-// import jakarta.validation.constraints.NotNull;
-// import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "properties")
 public class Property {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    // @NotNull
-    // @Size(min = 5, max = 300, message = "Property must have a address")
+    
+    @NotEmpty(message = "Property must have an address")
+    @Size(min = 5, max = 300, message = "Address must be between 5 and 300 characters")
     private String address;
-    // @NotEmpty
-    // @NotNull
-    // @Size(min = 1, max = 99999, message = "Property must have a square footage")
+    
+    @NotNull(message = "Square footage is required")
+    @Min(value = 100, message = "Square footage must be at least 100")
+    @Max(value = 10000, message = "Square footage must be at most 10000")
     private Integer sqft;
-    // @NotEmpty
-    // @NotNull
+    
+    @NotNull(message = "Rented status is required")
     private Boolean isRented;
-    // @NotEmpty
-    // @NotNull
-    // @Size(min = 1, max = 9999999, message = "Property must have a bedrooms")
+    
+    @NotNull(message = "Number of bedrooms is required")
+    @Min(value = 1, message = "Must have at least 1 bedroom")
+    @Max(value = 10, message = "Must have at most 10 bedrooms")
     private Integer bedrooms;
-    // @NotEmpty
-    // @NotNull
-    // @Size(min = 1, max = 9999999, message = "Property must have a baths")
+    
+    @NotNull(message = "Number of baths is required")
+    @Min(value = 1, message = "Must have at least 1 bath")
+    @Max(value = 10, message = "Must have at most 10 baths")
     private Integer baths;
-    // @NotEmpty
-    // @NotNull
-    // @Size(min = 1, max = 9999999, message = "Property must have a mortage")
+    
+    @NotNull(message = "Expenses amount is required")
+    @Positive(message = "Expenses must be a positive number")
     private Integer expenses;
-    // @NotEmpty
-    // @NotNull
-    // @Size(min = 1, max = 9999999, message = "Property must have a mortage")
+    
+    @Min(value = 0, message = "Rent income must be a non-negative number")
     private Integer rentIncome;
+    
     private String imageUrl;
-    // This will not allow the createdAt column to be updated after creation
+    
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
+    
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Property() {
     }
+
 
     public Long getId() {
         return this.id;
@@ -166,7 +159,6 @@ public class Property {
         this.user = user;
     }
 
-
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
@@ -191,7 +183,7 @@ public class Property {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
+                ", userId=" + (user == null ? "null" : user.getId()) +
                 '}';
     }
-
 }

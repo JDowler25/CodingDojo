@@ -6,15 +6,19 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.jaydandowler.propfolio.models.Property;
+import com.jaydandowler.propfolio.models.User;
 import com.jaydandowler.propfolio.repositories.PropertyRepository;
+import com.jaydandowler.propfolio.repositories.UserRepository;
 
 @Service
 public class PropertyService {
     // adding the Property repository as a dependency
-    private final PropertyRepository propertyRepository;
-
-    public PropertyService(PropertyRepository propertyRepository) {
+      private final PropertyRepository propertyRepository;
+    private final UserRepository userRepository;  // Injecting UserRepository
+    
+    public PropertyService(PropertyRepository propertyRepository, UserRepository userRepository) {
         this.propertyRepository = propertyRepository;
+        this.userRepository = userRepository;  // Initializing UserRepository
     }
 
     // returns all the Properties
@@ -22,11 +26,15 @@ public class PropertyService {
         return propertyRepository.findAll();
     }
 
-    // creates a Property
-    public Property createProperty(Property property) {
-        validateRentIncome(property);
+    public Property createProperty(Property property, Long userId) {
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("User not found with id : " + userId)); // Use an appropriate exception
+        
+        property.setUser(user);
         return propertyRepository.save(property);
     }
+    
+    
     
     // updates a Property
     public Property updateProperty(Long id, Property updatedProperty) {
@@ -48,6 +56,7 @@ public class PropertyService {
             propertyRepository.save(existingProperty);
             return existingProperty;
         } else {
+
             return null;
         }
     }

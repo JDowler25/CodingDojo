@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
 const PropForm = () => {
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
+    const { user } = useContext(UserContext)
     const [formData, setFormData] = useState({
         address: '',
         sqft: '',
@@ -13,8 +15,11 @@ const PropForm = () => {
         expenses: '',
         isRented: false,
         rentIncome: '',
-        imageUrl: ''
+        imageUrl: '',
+        user: { id: user.id },
     });
+
+    console.log(user);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -74,19 +79,19 @@ const PropForm = () => {
             try {
                 // Log formData before sending it
                 console.log("Sending formData:", formData);
-
-                // Replace 'http://localhost:8080/api/properties/create' with your actual API endpoint
                 const response = await axios.post('http://localhost:8080/api/properties/create', formData);
                 console.log(response.data);
                 navigate('/properties');
             } catch (errors) {
-                console.log(errors.response.data.errors); // Adjust this based on your API error response structure
+                console.error(errors); // Adjust this based on your API error response structure
+                if (errors.response && errors.response.data) {
+                    console.log(errors.response.data.errors); 
+                }
             }
         } else {
             // You might want to handle form validation errors here
         }
     };
-
 
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
@@ -198,6 +203,7 @@ const PropForm = () => {
                     <p key={index} className="text-red-500">{error}</p>
                 ))}
             </div>
+            <input type="hidden" name='user_id' value={user} />
             {/* ... (other input fields) ... */}
             <div className="flex items-center justify-between">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

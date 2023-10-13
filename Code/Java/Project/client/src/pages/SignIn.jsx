@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { loginlogo, highrise } from '../assets';
 import './SignIn.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../components/UserContext';
+import { UserContext } from '../context/UserContext';
 
 function SignIn() {
   const backgroundImageStyle = {
@@ -46,7 +46,7 @@ function SignIn() {
         console.log(user)
         const response = await axios.post(`http://localhost:8080/api/login`, user);
         console.log(response.data);
-        setUser(response.data.user); // Set the user context here. Adjust this line based on the actual structure of your response.
+        setUser(response.data.id); // Set the user context here. Adjust this line based on the actual structure of your response.
         navigate('/dashboard');
       } catch (errors) {
         console.log(errors.response.data.errors);
