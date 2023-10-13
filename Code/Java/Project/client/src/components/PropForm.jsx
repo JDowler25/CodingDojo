@@ -16,10 +16,11 @@ const PropForm = () => {
         isRented: false,
         rentIncome: '',
         imageUrl: '',
-        user: { id: user.id },
+        userId: user,
     });
 
-    console.log(user);
+    console.log(user); console.log("Current User State:", user);
+    console.log("User from Local Storage:", localStorage.getItem("user_id"));
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -75,23 +76,27 @@ const PropForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!user) {
+            console.log("User is not logged in.");
+            // Handle this case: show an error message or redirect to login page
+            return;
+        }
         if (isValid()) {
             try {
-                // Log formData before sending it
                 console.log("Sending formData:", formData);
                 const response = await axios.post('http://localhost:8080/api/properties/create', formData);
                 console.log(response.data);
                 navigate('/properties');
             } catch (errors) {
-                console.error(errors); // Adjust this based on your API error response structure
-                if (errors.response && errors.response.data) {
-                    console.log(errors.response.data.errors); 
-                }
+                console.log(errors); // Log the entire error object
+                // Check if response.data.errors exists before trying to log it
+                console.log(errors.response?.data?.errors); 
             }
         } else {
-            // You might want to handle form validation errors here
+            // Handle form validation errors
         }
     };
+    
 
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">

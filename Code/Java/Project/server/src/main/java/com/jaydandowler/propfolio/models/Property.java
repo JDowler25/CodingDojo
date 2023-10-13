@@ -52,12 +52,11 @@ public class Property {
     private Date updatedAt;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     public Property() {
     }
-
 
     public Long getId() {
         return this.id;
