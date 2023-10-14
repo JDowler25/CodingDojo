@@ -16,7 +16,7 @@ const PropForm = () => {
         isRented: false,
         rentIncome: '',
         imageUrl: '',
-        userId: user,
+        user: {id: user},
     });
 
     console.log(user); console.log("Current User State:", user);

@@ -2,6 +2,9 @@ package com.jaydandowler.propfolio.models;
 
 import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -53,6 +56,7 @@ public class Property {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
+    @JsonBackReference
     private User user;
 
     public Property() {
