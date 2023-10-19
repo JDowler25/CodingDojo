@@ -45,10 +45,26 @@ public class UserService {
             return null;
         }
     }
+
+    public User updateUser(Long id, User updateUser) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User existingUser = optionalUser.get();
+    
+            existingUser.setEmail(updateUser.getEmail());
+            existingUser.setPassword(updateUser.getPassword());
+            existingUser.setUser_name(updateUser.getUser_name()); 
+            userRepository.save(existingUser);
+            return existingUser; 
+        }
+    
+        return null; 
+    }
+    
     
     public User login(LoginUser newLoginObject, BindingResult result) {
     	Optional<User> user = userRepository.findByEmail(newLoginObject.getEmail());
-    	if(!user.isPresent()) {
+    	if(user.isEmpty()) {
     		result.rejectValue("email", "loginEmail", "Email not found");
     	}
     	else if(!BCrypt.checkpw(newLoginObject.getPassword(), user.get().getPassword())) {

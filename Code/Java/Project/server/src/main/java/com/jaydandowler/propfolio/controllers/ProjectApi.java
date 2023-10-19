@@ -1,5 +1,7 @@
 package com.jaydandowler.propfolio.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,27 @@ public class ProjectApi {
         return ResponseEntity.ok().body(userService.allUsers());
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        User user = userService.findUser(userId);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/user/update/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
+        User updatedUser = userService.updateUser(userId, user);
+        if (updatedUser != null) {
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     @PostMapping("/register")
     public ResponseEntity<Object> registerUser(@Valid @RequestBody User user, BindingResult result) {
         System.out.println(user);
@@ -65,37 +88,40 @@ public class ProjectApi {
         return ResponseEntity.ok().body(propertyService.allProperties());
     }
 
+    @GetMapping("/properties/user/{userId}")
+    public ResponseEntity<List<Property>> getPropertiesByUserId(@PathVariable Long userId) {
+        List<Property> properties = propertyService.getPropertiesByUserId(userId);
+        return ResponseEntity.ok(properties);
+    }
+
     @PostMapping("/properties/create")
     public ResponseEntity<Object> createProperty(@Valid @RequestBody Property property, BindingResult result) {
         System.out.println("Received Property object: " + property);
         System.out.println("isRented value: " + property.isIsRented());
-    
+
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return ResponseEntity.status(400).body(result.getAllErrors().toString());
         }
-        
+
         if (property.getUser() == null || property.getUser().getId() == null) {
             return ResponseEntity.status(400).body("User id must be provided");
         }
-    
+
         Long userId = property.getUser().getId();
         Property savedProperty = propertyService.createProperty(property, userId);
-        
+
         return ResponseEntity.ok().body(savedProperty);
     }
-    
-    
-
 
     @DeleteMapping("/properties/delete/{id}")
-    public ResponseEntity<Object> deleteProperty(@PathVariable("id") Long id) {
+    public ResponseEntity<Object> deleteProperty(@PathVariable Long id) {
         propertyService.deleteProperty(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/properties/update/{id}")
-    public ResponseEntity<Object> updateProperty(@PathVariable("id") Long id, @Valid @RequestBody Property property,
+    public ResponseEntity<Object> updateProperty(@PathVariable Long id, @Valid @RequestBody Property property,
             BindingResult result) {
         System.out.println("****************************************************************");
         System.out.println("Received Property object: " + property);

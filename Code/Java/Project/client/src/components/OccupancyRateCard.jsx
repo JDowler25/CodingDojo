@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, Label } from 'recharts';
+import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
-const data = [
-  { name: 'Vacant', value: 400 },
-  { name: 'Occupied', value: 600 },
-];
 
 const COLORS = ['#ff4998', '#1665d8'];
 
 const OccupancyRateCard = () => {
+  const { user } = useContext(UserContext)
+  const [data, setData] = useState([
+    { name: 'Vacant', value: 0 },
+    { name: 'Occupied', value: 0 },
+  ]);
+
+  useEffect(() => {
+    // Assume user id is stored in localStorage, adjust if stored differently
+    const userId = user;
+
+    axios.get(`http://localhost:8080/api/properties/user/${userId}`)
+      .then(response => {
+        const properties = response.data;
+
+        // Calculate vacant and occupied properties
+        let vacant = 0, occupied = 0;
+        properties.forEach(property => property.isRented ? occupied++ : vacant++);
+
+        setData([
+          { name: 'Vacant', value: vacant },
+          { name: 'Occupied', value: occupied }
+        ]);
+      })
+      .catch(error => {
+        console.error("Error fetching data: ", error);
+        // Handle error appropriately
+      });
+  }, []); // Empty dependency array means this useEffect runs once when component mounts
+  
   const totalUnits = data.reduce((total, entry) => total + entry.value, 0);
   
   return (
