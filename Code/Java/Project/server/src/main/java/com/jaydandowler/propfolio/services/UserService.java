@@ -2,6 +2,11 @@ package com.jaydandowler.propfolio.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import com.jaydandowler.propfolio.models.LoginUser;
 import com.jaydandowler.propfolio.models.User;
 import com.jaydandowler.propfolio.repositories.UserRepository;
+import com.jaydandowler.propfolio.validationgroups.CreateUser;
 
 @Service
 public class UserService {
@@ -19,6 +25,13 @@ public class UserService {
     UserRepository userRepository;
     
     public User register(User newUser, BindingResult result) {
+        // Validate using CreateUser group
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<User>> violations = validator.validate(newUser, CreateUser.class);
+        for (ConstraintViolation<User> violation : violations) {
+            result.rejectValue(violation.getPropertyPath().toString(), "", violation.getMessage());
+        }
+
         if(userRepository.findByEmail(newUser.getEmail()).isPresent()) {
         	result.rejectValue("email", "Unique", "Email is Taken");
         }
@@ -52,15 +65,20 @@ public class UserService {
             User existingUser = optionalUser.get();
     
             existingUser.setEmail(updateUser.getEmail());
-            existingUser.setPassword(updateUser.getPassword());
-            existingUser.setUser_name(updateUser.getUser_name()); 
+            existingUser.setUser_name(updateUser.getUser_name());
+
+            // If the provided password is not empty and different from the existing one, hash and set it
+            if (!updateUser.getPassword().isEmpty() && !updateUser.getPassword().equals(existingUser.getPassword())) {
+                String hashed = BCrypt.hashpw(updateUser.getPassword(), BCrypt.gensalt());
+                existingUser.setPassword(hashed);
+            }
+            
             userRepository.save(existingUser);
             return existingUser; 
         }
     
         return null; 
     }
-    
     
     public User login(LoginUser newLoginObject, BindingResult result) {
     	Optional<User> user = userRepository.findByEmail(newLoginObject.getEmail());

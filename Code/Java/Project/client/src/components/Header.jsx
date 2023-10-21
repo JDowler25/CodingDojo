@@ -3,14 +3,14 @@ import { helpIcon, accountIcon, searchIcon, settingsIcon, logoutIcon } from '../
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-
-const Header = ({ userName }) => {
+const Header = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { setUser, user } = useContext(UserContext);
   const [shouldLoad, setShouldLoad] = useState(false);
 
+  console.log(user);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -20,11 +20,12 @@ const Header = ({ userName }) => {
 
   useEffect(() => {
     if (!user) {
-      navigate('/')
+      navigate('/');
     } else {
       setShouldLoad(true);
     }
-  }, [user])
+  }, [user]);
+
   if (shouldLoad) {
     return (
       <div className="w-full h-auto flex flex-col justify-center px-4 bg-white shadow-md">
@@ -79,7 +80,7 @@ const Header = ({ userName }) => {
         </div>
         {/* User Greeting */}
         <div className="mt-2 text-gray-700 text-3xl font-semibold pb-2">
-          Hi, <span className="text-blue-500">Jaydan</span>! Welcome back!
+          Hi, <span className="text-blue-500">{user.user_name}</span>! Welcome back!
         </div>
       </div>
     );

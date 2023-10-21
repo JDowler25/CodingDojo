@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { loginlogo, highrise } from '../assets';
 import './SignUp.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
+
 
 const SignUp = () => {
   const backgroundImageStyle = {
@@ -12,7 +14,7 @@ const SignUp = () => {
     position: 'relative', // Required for overlay
   };
 
-  const [user, setUser] = useState({
+  const [user, setUserState] = useState({
     first_name: "",
     last_name: "",
     user_name: "",
@@ -22,6 +24,7 @@ const SignUp = () => {
   })
 
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Using the User context here
   const [formErrors, setFormErrors] = useState({});
 
   const isValid = () => {
@@ -66,6 +69,7 @@ const SignUp = () => {
         console.log(user)
         const response = await axios.post(`http://localhost:8080/api/register`, user)
         console.log(response.data)
+        setUser(response.data.id); // Set the user context here. Adjust this line based on the actual structure of your response.
         navigate('/dashboard')
       } catch (errors) {
         console.log(errors.response.data.errors)
@@ -76,7 +80,7 @@ const SignUp = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser(({
+    setUserState(({
       ...user,
       [name]: value
     }));

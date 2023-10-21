@@ -46,14 +46,14 @@ public class User {
     private String email;
 
     @NotEmpty(message = "Password is required!")
-    @Size(min = 3, max = 128, message = "Password must be between 8 and 128 characters")
+    @Size(min = 3, max = 128, message = "Password must be between 3 and 128 characters")
     private String password;
 
     @Transient
-    @NotEmpty(message = "Confirm Password is required!")
-    @Size(min = 3, max = 128, message = "Confirm Password must be between 8 and 128 characters")
+    @NotEmpty(message = "Confirm Password is required!", groups = CreateUser.class)
+    @Size(min = 3, max = 128, message = "Confirm Password must be between 8 and 128 characters", groups = CreateUser.class)
     private String confirm;
-
+    
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date created_at;
@@ -64,6 +64,9 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Property> properties;
+
+    public interface CreateUser {}
+    public interface UpdateUser {}
 
     public User() {
     }
