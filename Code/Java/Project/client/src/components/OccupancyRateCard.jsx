@@ -15,7 +15,7 @@ const OccupancyRateCard = () => {
 
   useEffect(() => {
     // Assume user id is stored in localStorage, adjust if stored differently
-    const userId = user;
+    const userId = user.id;
 
     axios.get(`http://localhost:8080/api/properties/user/${userId}`)
       .then(response => {

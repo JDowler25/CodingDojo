@@ -23,18 +23,18 @@ const Properties = () => {
     }, []); // empty dependency array means this useEffect runs once when component mounts
 
     return (
-        <div className="flex h-screen w-screen bg-gray-100">
+        <div className="flex w-screen bg-gray-100">
             {/* Sidebar */}
             <div className="bg-sidebar-bg text-white w-52 flex-shrink-0">
                 <SideNavBar />
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col overflow-hidden bg-f0f0f7">
+            <div className="container flex-1 flex flex-col overflow-hidden bg-f0f0f7">
                 {/* Header */}
                 <Header />
                 {/* Main Content */}
-                <main className=" container flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto h-screen overflow-y-scroll">
+                <main className="container flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto overflow-y-scroll">
                     <h1 className="text-2xl font-semibold mb-4">Properties</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {properties.map(property => (

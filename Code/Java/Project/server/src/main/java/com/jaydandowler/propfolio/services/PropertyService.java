@@ -32,9 +32,7 @@ public class PropertyService {
 
     public Property createProperty(Property property, Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found with id : " + userId)); // Use an appropriate
-                                                                                                // exception
-
+                .orElseThrow(() -> new RuntimeException("User not found with id : " + userId));
         property.setUser(user);
         return propertyRepository.save(property);
     }

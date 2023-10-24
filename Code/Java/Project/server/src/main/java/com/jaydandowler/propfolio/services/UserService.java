@@ -13,7 +13,6 @@ import org.springframework.validation.Validator;
 import com.jaydandowler.propfolio.models.LoginUser;
 import com.jaydandowler.propfolio.models.User;
 import com.jaydandowler.propfolio.repositories.UserRepository;
-// import com.jaydandowler.propfolio.validationgroups.CreateUser;
 
 @Service
 public class UserService {

@@ -69,7 +69,8 @@ const SignUp = () => {
         console.log(user)
         const response = await axios.post(`http://localhost:8080/api/register`, user)
         console.log(response.data)
-        setUser(response.data); // Set the user context here. Adjust this line based on the actual structure of your response.
+        setUser(response.data); // Set the user context here. 
+        localStorage.setItem("user", JSON.stringify(response.data));
         navigate('/dashboard')
       } catch (errors) {
         console.log(errors.response.data.errors)

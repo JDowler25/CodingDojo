@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { helpIcon, accountIcon, searchIcon, settingsIcon, logoutIcon } from '../assets'; 
+import { accountIcon, searchIcon, logoutIcon } from '../assets';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,10 +12,30 @@ const Header = () => {
 
   console.log(user);
 
+  const searchMap = {
+    "properties": "/properties",
+    "overview": "/dashboard",
+    "settings": "/settings",
+  };
+
   const handleLogout = () => {
     localStorage.clear();
     setUser(null);
     navigate('/signin'); // redirect to sign-in page
+  };
+
+  // Search function
+  const handleSearchSubmit = () => {
+    // Find the route associated with the searchTerm
+    const route = searchMap[searchTerm.toLowerCase()];
+
+    // If a route was found, navigate to it
+    if (route) {
+      navigate(route);
+    } else {
+      // Handle cases where there's no match, maybe show a message to the user
+      console.log("No matching page found");
+    }
   };
 
   useEffect(() => {
@@ -33,14 +53,16 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 ">
           {/* Search Bar */}
           <div className="relative w-1/2">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full h-10 pl-10 pr-4 rounded-full border focus:outline-none"
-            />
-            <img src={searchIcon} alt="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+            <form onSubmit={handleSearchSubmit}>
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full h-10 pl-10 pr-4 rounded-full border focus:outline-none"
+              />
+              <img src={searchIcon} alt="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+            </form>
           </div>
           {/* Icons Section */}
           <div className="flex items-center space-x-4">
