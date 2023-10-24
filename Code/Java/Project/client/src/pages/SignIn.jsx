@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { loginlogo, highrise } from '../assets';
-import './SignIn.css'; // Import the CSS file
+import './SignIn.css'; 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import { loginlogo, highrise } from '../assets';
-import './SignUp.css'; // Import the CSS file
+import './SignUp.css'; 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
@@ -9,8 +9,8 @@ import { UserContext } from '../context/UserContext';
 const SignUp = () => {
   const backgroundImageStyle = {
     backgroundImage: `linear-gradient(rgba(60, 74, 131, 0.7), rgba(60, 74, 131, 0.7)), url(${highrise})`, // Set the background image and apply the specified color using linear-gradient
-    backgroundSize: 'cover', // Optional: Cover the entire element
-    backgroundPosition: 'center', // Optional: Center the background image
+    backgroundSize: 'cover', //Cover the entire element
+    backgroundPosition: 'center', //Center the background image
     position: 'relative', // Required for overlay
   };
 
