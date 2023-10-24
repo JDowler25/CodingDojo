@@ -18,7 +18,7 @@ const EditUserForm = () => {
 
     // Fetch the user data from the backend when the component mounts
     useEffect(() => {
-        const userId = user;
+        const userId = user.id;
 
         axios.get(`http://localhost:8080/api/user/${userId}`)
             .then(response => {

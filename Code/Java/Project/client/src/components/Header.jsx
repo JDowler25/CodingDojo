@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { helpIcon, accountIcon, searchIcon, settingsIcon, logoutIcon } from '../assets'; // Replace with actual import paths
+import { helpIcon, accountIcon, searchIcon, settingsIcon, logoutIcon } from '../assets'; 
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,8 +44,8 @@ const Header = () => {
           </div>
           {/* Icons Section */}
           <div className="flex items-center space-x-4">
-            {/* Help Icon */}
-            <img src={helpIcon} alt="Help" className="w-6 h-6 cursor-pointer" />
+            {/* Help Icon
+            <img src={helpIcon} alt="Help" className="w-6 h-6 cursor-pointer" /> */}
 
             {/* Profile Dropdown */}
             <div className="relative">
@@ -58,17 +58,13 @@ const Header = () => {
               {/* Dropdown Menu */}
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg py-1">
-                  <div className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100" onClick={() => navigate('/profile')}>
+                  <div className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100" onClick={() => navigate('/settings')}>
                     <img src={accountIcon} alt="Profile" className="w-4 h-4 mr-2" />
                     Profile
                   </div>
-                  <div className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100">
-                    <img src={settingsIcon} alt="Settings" className="w-4 h-4 mr-2" />
-                    Settings
-                  </div>
                   <div
                     className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
-                    onClick={handleLogout} // handle logout on click
+                    onClick={handleLogout}
                   >
                     <img src={logoutIcon} alt="Logout" className="w-4 h-4 mr-2" />
                     Logout

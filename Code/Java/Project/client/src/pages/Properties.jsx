@@ -34,8 +34,8 @@ const Properties = () => {
                 {/* Header */}
                 <Header />
                 {/* Main Content */}
-                <main className="flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto">
-                    <h1 className="text-2xl font-bold mb-4">Properties</h1>
+                <main className=" container flex-grow flex flex-col items-center justify-center bg-f0f0f7 p-4 mx-auto h-screen overflow-y-scroll">
+                    <h1 className="text-2xl font-semibold mb-4">Properties</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {properties.map(property => (
               <Link key={property.id} to={`/properties/update/${property.id}`}>

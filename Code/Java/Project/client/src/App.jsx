@@ -7,6 +7,7 @@ import CreateProp from './components/CreateProp';
 import UpdateProp from './pages/UpdateProp';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Settings from './pages/Settings';
 import { UserProvider } from './context/UserContext';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/property/update/:id" element={<UpdateProp />} />
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/edit/profile' element={<EditProfile/>}/>
+        <Route path='/settings' element={<Settings/>}/>
       </Routes>
     </div>
     </UserProvider>

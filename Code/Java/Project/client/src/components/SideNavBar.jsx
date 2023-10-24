@@ -15,9 +15,14 @@ const SideNavBar = () => {
       setActiveTab('Properties')
     }
     if (activeTab === 'Overview') {
-      console.log("Navigating to /dashboard");
+      console.log("Navigating to /overview");
       navigate('/dashboard');
       setActiveTab('Overview')
+    }
+    if (activeTab === 'Settings') {
+      console.log("Navigating to /settings");
+      navigate('/settings');
+      setActiveTab('Settings')
     }
     // Add more navigation logic for other tabs if needed
   }, [activeTab, navigate]); // Depend on activeTab and navigate
@@ -33,7 +38,7 @@ const SideNavBar = () => {
 
         {/* Create New Button */}
         <button
-          onClick={() => navigate('/property/new')}  // Added onClick handler here
+          onClick={() => navigate('/property/new')} 
           className="py-2 px-4 mb-4 w-3/4 rounded-3xl shadow-lg bg-button-green text-white text-sm"
         >
           + Create New

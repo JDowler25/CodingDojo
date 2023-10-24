@@ -11,7 +11,7 @@ const UserProfile = () => {
   
 
   useEffect(() => {
-    const userId = user;
+    const userId = user.id;
     
     // Fetch user data from the server
     axios.get(`http://localhost:8080/api/user/${userId}`)
