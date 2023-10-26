@@ -144,7 +144,7 @@ public class ProjectApi {
         } catch (NumberFormatException e) {
             // Handle the error if ID is not a valid number
             System.err.println("Invalid ID received: " + id);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID"); // Return error response
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID"); // Return error responses
         }
     }
 

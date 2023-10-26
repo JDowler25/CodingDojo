@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import UserProfile from './UserProfile';
 import Help from './Help';
-import { helpIcon, accountIcon } from '../assets';
+import accountIcon  from '../assets/accountCircle.svg?w=500&format=webp';
+import helpIcon from '../assets/helpIcon.svg?w=500&format=webp';
 
 const SettingsContent = () => {
   const [activeTab, setActiveTab] = useState('profile');

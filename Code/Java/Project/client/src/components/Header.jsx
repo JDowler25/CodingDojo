@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { accountIcon, searchIcon, logoutIcon } from '../assets';
+import accountIcon  from '../assets/accountCircle.svg?w=500&format=webp';
+import searchIcon  from '../assets/searchIcon.svg?w=500&format=webp';
+import logoutIcon from '../assets/LoginandRegLogo.svg?w=500&format=webp';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 

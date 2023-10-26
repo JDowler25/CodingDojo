@@ -1,5 +1,5 @@
-import React from 'react'
-import { accountIcon } from '../assets'
+import React from 'react';
+import accountIcon from '../assets/accountCircle.svg?w=500&format=webp';
 
 const Help = () => {
     return (

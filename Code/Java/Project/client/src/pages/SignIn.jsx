@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
-import { loginlogo, highrise } from '../assets';
+import loginlogo from '../assets/LoginandRegLogo.svg?w=200&format=webp';
+import highrise from '/src/assets/Highrise.jpg?import&w=2000&format=webp';
 import './SignIn.css'; 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';

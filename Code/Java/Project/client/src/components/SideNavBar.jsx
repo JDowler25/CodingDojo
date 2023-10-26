@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // import useNavigate
-import { logo } from '../assets'; // Make sure to replace with the actual path
+import logo from '../assets/logo.svg?w=500&format=webp'; 
 
 const SideNavBar = () => {
   const [activeTab, setActiveTab] = useState('');
