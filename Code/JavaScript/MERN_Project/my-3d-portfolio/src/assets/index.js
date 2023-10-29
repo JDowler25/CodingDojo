@@ -32,7 +32,8 @@ import tesla from "./company/tesla.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
-
+import propfolio from "./propfolio.png";
+import dashboard from "./dashboard.jpg";
 export {
   logo,
   backend,
@@ -65,4 +66,6 @@ export {
   codingDojo,
   python,
   java,
+  propfolio,
+  dashboard
 };

@@ -1,7 +1,6 @@
 import {
   mobile,
   backend,
-  creator,
   web,
   javascript,
   html,
@@ -14,6 +13,8 @@ import {
   threejs,
   python,
   java,
+  propfolio,
+  dashboard,
 } from "../assets";
 
 export const navLinks = [
@@ -98,57 +99,57 @@ const experiences = [
     iconBg: "#383E56",
     date: "June 2023 - September 2023",
     points: [
-      "Create full scale web applications in 3 different tech stacks",
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia velit nam laudantium ad perferendis aperiam placeat totam, doloribus omnis. Iste numquam natus pariatur aliquid ipsa harum deserunt itaque provident possimus!",
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      'An immersive 4 - month full - stack web development bootcamp that specializes in Python, Java, MERN(MongoDB, Express, React, Node.js)',
+      'Spent 1000 + hours on intensive coursework through all phases of project development of full - stack applications including building, testing, debugging, and deploying.',
     ],
   },
 ];
 
 
 const projects = [
+  // {
+  //   name: "Fantasy BasketBall App",
+  //   description:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
+  //   tags: [
+  //     {
+  //       name: "[tech]",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "[tech]",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "[tech]",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   // image: ,
+  //   source_code_link: "#",
+  // },
   {
-    name: "Fantasy BasketBall App",
+    name: "Propfolio",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
+      "An intuitive property management platform designed for modern real estate professionals. With Propfolio, users can effortlessly track their property portfolios, monitor occupancy rates, and manage profit/loss margins. Its integrated dashboard provides a holistic view of rented and vacant properties, streamlining operations and financial tracking. Whether you're a seasoned real estate mogul or just starting out, Propfolio offers the tools you need to optimize your property investments.",
     tags: [
       {
-        name: "[tech]",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
-        name: "[tech]",
+        name: "Java",
         color: "green-text-gradient",
       },
       {
-        name: "[tech]",
+        name: "TailWindCSS",
         color: "pink-text-gradient",
       },
     ],
-    // image: carrent,
-    source_code_link: "#",
-  },
-  {
-    name: "Real Estate Investment App",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, fuga. Ab sed sint praesentium accusantium esse delectus deserunt eius repellat sit error alias, voluptas omnis inventore autem architecto, ducimus molestias.",
-    tags: [
-      {
-        name: "[tech]",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "[tech]",
-        color: "green-text-gradient",
-      },
-      {
-        name: "[tech]",
-        color: "pink-text-gradient",
-      },
-    ],
-    // image: carrent,
-    source_code_link: "#",
+    image: dashboard,
+    source_code_link: "https://propfolio-olive.vercel.app/signup",
+    github_link: "https://github.com/JDowler25/CodingDojo/tree/main/Code/Java/Project"
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, experiences, projects };
