@@ -25,7 +25,7 @@ const UpdateProp = () => {
             // Fetch property data from API when component is mounted
             const fetchProperty = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:8080/api/properties/${id}`); // Adjust API endpoint
+                    const response = await axios.get(`https://propfolio-1749527b1b81.herokuapp.com/api/properties/${id}`);
                     setProperty(response.data); // Set fetched data to state
                     setLoading(false); // Set loading to false after data is fetched
                 } catch (err) {

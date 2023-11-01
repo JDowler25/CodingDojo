@@ -68,7 +68,7 @@ const SignUp = () => {
     if(isValid()){
       try {
         console.log(user)
-        const response = await axios.post(`http://localhost:8080/api/register`, user)
+        const response = await axios.post(`https://propfolio-1749527b1b81.herokuapp.com/api/register`, user);
         console.log(response.data)
         setUser(response.data); // Set the user context here. 
         localStorage.setItem("user", JSON.stringify(response.data));

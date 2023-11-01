@@ -19,7 +19,7 @@ const UpdatePropForm = () => {
 
     // Fetch initial data for the property
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/properties/${id}`)
+        axios.get(`https://propfolio-1749527b1b81.herokuapp.com/api/properties/${id}`)
             .then(response => setFormData(response.data)) // Set the initial data
             .catch(err => console.log(err));
     }, [id]); // Dependency array to re-run effect when `id` changes
@@ -81,7 +81,7 @@ const UpdatePropForm = () => {
         if (isValid()) {
             try {
                 console.log(formData.address)
-                const response = await axios.put(`http://localhost:8080/api/properties/update/${id}`, formData);
+                const response = await axios.put(`https://propfolio-1749527b1b81.herokuapp.com/api/properties/update/${id}`, formData);
                 console.log(response.data);
                 navigate('/properties');
             }
@@ -100,7 +100,7 @@ const UpdatePropForm = () => {
     const handleDelete = async () => {
         try {
             // Making a DELETE request to the server
-            await axios.delete(`http://localhost:8080/api/properties/delete/${id}`);
+            await axios.delete(`https://propfolio-1749527b1b81.herokuapp.com/api/properties/delete/${id}`);
             // Navigate to another page after successful deletion
             navigate('/properties');
         } catch (errors) {

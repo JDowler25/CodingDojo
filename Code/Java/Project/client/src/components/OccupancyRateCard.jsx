@@ -17,7 +17,7 @@ const OccupancyRateCard = () => {
     // Assume user id is stored in localStorage, adjust if stored differently
     const userId = user.id;
 
-    axios.get(`http://localhost:8080/api/properties/user/${userId}`)
+    axios.get(`https://propfolio-1749527b1b81.herokuapp.com/api/properties/user/${userId}`)
       .then(response => {
         const properties = response.data;
 

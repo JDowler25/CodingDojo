@@ -84,7 +84,7 @@ const PropForm = () => {
         if (isValid()) {
             try {
                 console.log("Sending formData:", formData);
-                const response = await axios.post('http://localhost:8080/api/properties/create', formData);
+                const response = await axios.post('https://propfolio-1749527b1b81.herokuapp.com/api/properties/create', formData);
                 console.log(response.data);
                 navigate('/properties');
             } catch (errors) {

@@ -14,7 +14,7 @@ const UserProfile = () => {
     const userId = user.id;
     
     // Fetch user data from the server
-    axios.get(`http://localhost:8080/api/user/${userId}`)
+    axios.get(`https://propfolio-1749527b1b81.herokuapp.com/api/user/${userId}`)
       .then((response) => {
         setUserData(response.data);
       })

@@ -12,7 +12,7 @@ const Properties = () => {
         // function to fetch properties data
         const fetchProperties = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/properties'); // adjust the endpoint as needed
+                const response = await axios.get('https://propfolio-1749527b1b81.herokuapp.com/api/properties'); 
                 setProperties(response.data); // set the fetched data to state
             } catch (error) {
                 console.error('Error fetching properties data: ', error);

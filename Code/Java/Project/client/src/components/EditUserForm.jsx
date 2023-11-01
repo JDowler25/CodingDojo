@@ -20,7 +20,7 @@ const EditUserForm = () => {
     useEffect(() => {
         const userId = user.id;
 
-        axios.get(`http://localhost:8080/api/user/${userId}`)
+        axios.get(`https://propfolio-1749527b1b81.herokuapp.com/api/user/${userId}`)
             .then(response => {
                 setUserData(response.data);
             })
@@ -66,7 +66,7 @@ const EditUserForm = () => {
         if (isValid()) {
             try {
                 console.log(userData);
-                const response = await axios.put(`http://localhost:8080/api/user/update/${user}`, userData);
+                const response = await axios.put(`https://propfolio-1749527b1b81.herokuapp.com/api/user/update/${user}`, userData);
                 if (response && response.data) {
                     console.log(response.data);
                     navigate('/profile');
